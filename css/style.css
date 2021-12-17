@@ -1,22 +1,30 @@
 @import url("photographer.css");
 
 :root {
+    --font-default: "DM Sans", sans-serif;
+
     --color-primary: #901C1C;
     --color-secondary: #D3573C;
     --color-tertiary: #525252;
     --color-tertiary-bg: #FAFAFA;
+    --color-gray: hsl(0, 0%, 49%);
+
+     /* ====== TYPOGRAPHY ====== */
+    --font-size-base: 1em;
 }
 
 * {
     box-sizing: border-box;
-}
-
-
-body {
-    font-family: "DM Sans", sans-serif;
     margin: 0;
+    padding: 0;
 }
 
+html,
+body {
+  height: 100%;
+  font-size: var(--font-size-base);
+  font-family: var(--font-default);
+}
 
 header {
     display: flex;
@@ -27,8 +35,12 @@ header {
 }
 
 h1 {
-    color: #901C1C;
+    color: var(--color-primary);
     margin-right: 100px;
+}
+
+h2 {
+    margin-block-start: 24px;
 }
 
 .logo {
@@ -36,27 +48,59 @@ h1 {
     margin-left: 100px;
 }
 
-.photographer_section {
+.photographer__section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
     margin-top: 100px;
 }
 
-.photographer_section article {
-    justify-self: center;
+.photographer__card {
     display: flex;
+    flex-direction: column;
+    justify-self: center;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
 
-.photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
-}
-
-.photographer_section article img {
+.photographer__section .cardImg__wrapper {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
 }
+
+.photographer__section .cardImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.photographer__section .cardHeading {
+    color: var(--color-secondary);
+    font-size: 36px;
+    font-weight: 400;
+}
+
+.photographer__section .cardText {
+    text-align: center;
+}
+
+.photographer__section .cardText p {
+    margin-block: 8px;
+    font-size: 0.8rem;
+}
+
+.photographer__section .cardText .tagline, .photographer__section .cardText .price {
+    font-size: 0.7rem;
+}
+
+.photographer__section .cardText .city {
+    color: var(--color-primary);
+}
+
+.photographer__section .cardText .price {
+    color: var(--color-gray);
+}
+

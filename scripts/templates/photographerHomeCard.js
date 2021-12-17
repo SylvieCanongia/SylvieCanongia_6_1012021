@@ -30,20 +30,20 @@ function photographerHomeCard(photographer) {
   function createHomeCard() {
 
     // article element as card wrapper
-    let article = createElement('article', {className: 'photographer__section__article'}, undefined, 'div.photographer_section');
+    let article = createElement('article', {className: 'photographer__card'}, undefined, 'div.photographer__section');
 
     // img and its wrapper
-    createElement('div', {className: 'cardImg_wrapper'}, undefined, 'article');
-    createElement('img', {className: 'cardImg', src: picture}, undefined, 'div.cardImg_wrapper');
+    createElement('div', {className: 'cardImg__wrapper'}, undefined, 'article');
+    createElement('img', {className: 'cardImg', src: picture}, undefined, 'div.cardImg__wrapper');
 
     // heading
     createElement('h2', {className: 'cardHeading'}, name, 'article');
 
     // div that contains all texts except heading
-    createElement('div', {className: 'card_text'}, undefined, 'article');
-    createElement('p', {className: 'city'}, `${city}, ${country}`, 'div.card_text');
-    createElement('p', {className: 'tagline'}, `${tagline}`, 'div.card_text');
-    createElement('p', {className: 'price'}, `${price} €/jour`, 'div.card_text');
+    createElement('div', {className: 'cardText'}, undefined, 'article');
+    createElement('p', {className: 'city'}, `${city}, ${country}`, 'div.cardText');
+    createElement('p', {className: 'tagline'}, `${tagline}`, 'div.cardText');
+    createElement('p', {className: 'price'}, `${price} €/jour`, 'div.cardText');
 
     return (article);
   }
