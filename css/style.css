@@ -8,6 +8,7 @@
     --color-tertiary: #525252;
     --color-tertiary-bg: #FAFAFA;
     --color-gray: hsl(0, 0%, 49%);
+    --color-gray-tags: hsl(0, 0%, 85%);
 
      /* ====== TYPOGRAPHY ====== */
     --font-size-base: 1em;
@@ -17,6 +18,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    list-style-type: none;
 }
 
 html,
@@ -24,6 +26,11 @@ body {
   height: 100%;
   font-size: var(--font-size-base);
   font-family: var(--font-default);
+}
+
+.header__home,  main {
+    max-width: 1500px;
+    margin-inline: auto;
 }
 
 header {
@@ -36,7 +43,21 @@ header {
 
 h1 {
     color: var(--color-primary);
-    margin-right: 100px;
+    margin-right: 130px;
+}
+
+.header__tags {
+    display: flex;
+    font-size: 0.9rem;
+    margin-inline: 24px;
+}
+
+.header__tags li {
+    margin-inline: 4px;
+    border: 1px solid var(--color-gray-tags);
+    color: var(--color-primary);
+    border-radius: 20px;
+    padding: 3px 7px;
 }
 
 h2 {
@@ -45,7 +66,7 @@ h2 {
 
 .logo {
     height: 50px;
-    margin-left: 100px;
+    margin-left: 130px;
 }
 
 .photographer__section {
