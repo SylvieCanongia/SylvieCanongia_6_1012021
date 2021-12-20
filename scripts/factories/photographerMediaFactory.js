@@ -1,4 +1,4 @@
-function photographerFactory(data) {
+function photographerMediaFactory(data) {
   const { name, portrait } = data;
   // console.log(data)
   const picture = `assets/photographers/${portrait}`;

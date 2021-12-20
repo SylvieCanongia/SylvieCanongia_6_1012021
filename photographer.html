@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="FishEye est un site web qui permet aux photographes indépendants de présenter leurs meilleurs travaux !"
+    />
+    <meta name="author" content="Sylvie Canongia" />
+    <meta name="copyright" content="Sylvie Canongia" />
+
+    <title>Fisheye - photographe </title>
+    
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/356720bd71.js"
+      crossorigin="anonymous"
+    ></script>
+    
+    <!-- Styles -->
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+   
   </head>
   <body>
     <header>
@@ -15,6 +32,18 @@
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+      <section class="photograph__medias">
+        <div class="medias__sorting">
+          <label>Trier par :
+            <select name="sorting__list">
+              <option value="popularity">Popularité</option>
+              <option value="date">Date</option>
+              <option value="title">Titre</option>
+            </select>
+          </label>
+        </div>
+        <div class="medias__section"></div>
+      </section>
     </main>
     <div id="contact_modal">
 			<div class="modal">
@@ -31,6 +60,16 @@
 				</form>
 			</div>
 		</div>
+     <!-- Factories -->
+    <script src="scripts/factories/photographerMediaFactory.js"></script>
+    
+    <!-- pages -->
+    <script src="scripts/pages/photographer.js"></script>
+
+    <!-- Templates -->
+    <script src="scripts/templates/photographerMediaCard.js"></script>
+    
     <script src="/scripts/utils/contactForm.js"></script>
+    
   </body>
 </html>
