@@ -32,6 +32,9 @@ function photographerHomeCard(photographer) {
     // article element as card wrapper
     let article = createElement('article', {className: 'photographer__card'}, undefined, 'div.photographer__section');
 
+    // link wrapper of the card content
+    createElement('a', {className: 'photographer__card__content__wrapper', href: `./photographer.html?id=${id}`}, undefined, 'article');
+
     // img and its wrapper
     createElement('div', {className: 'cardImg__wrapper'}, undefined, 'article');
     createElement('img', {className: 'cardImg', src: picture}, undefined, 'div.cardImg__wrapper');

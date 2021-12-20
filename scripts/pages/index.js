@@ -20,6 +20,7 @@ async function displayData(photographers) {
   photographers.forEach((photographer) => {
     const photographerModel = photographerHomeCard(photographer);
     const photographerCard = photographerModel.createHomeCard();
+    console.log(photographerCard);
     photographersSection.appendChild(photographerCard);
   });
 }

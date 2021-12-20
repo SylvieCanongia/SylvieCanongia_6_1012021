@@ -28,6 +28,10 @@ body {
   font-family: var(--font-default);
 }
 
+a {
+    cursor: pointer;
+}
+
 .header__home,  main {
     max-width: 1500px;
     margin-inline: auto;
@@ -46,6 +50,8 @@ h1 {
     margin-right: 130px;
 }
 
+/* === TAGS === */
+
 .header__tags {
     display: flex;
     font-size: 0.9rem;
@@ -59,6 +65,8 @@ h1 {
     border-radius: 20px;
     padding: 3px 7px;
 }
+
+/* === CARDS === */
 
 h2 {
     margin-block-start: 24px;
@@ -77,11 +85,20 @@ h2 {
 }
 
 .photographer__card {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-self: center;
     justify-content: center;
     align-items: center;
+}
+
+.photographer__card__content__wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 .photographer__section .cardImg__wrapper {
