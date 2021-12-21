@@ -16,10 +16,11 @@ async function getPhotographerData() {
   };
 }
 
+// Get the URL
 const queryString_url = window.location.search;
-console.log(queryString_url);
+
 const urlSearchParams = new URLSearchParams(queryString_url);
-console.log(urlSearchParams);
+
 
 
 async function displayPhotographerCard(photographers) {
@@ -27,20 +28,19 @@ async function displayPhotographerCard(photographers) {
   const photograph__portrait = document.querySelector(".photograph__header__portrait");
 
   let photographerUrlId = urlSearchParams.get('id');
-  console.log(photographerUrlId);
+  
   let name = urlSearchParams.get('name');
-  console.log(name);
-
+  
+  // Find the index of the photographer with the url id.
   let photographerIndex = photographers.findIndex(function(el) {
     return el.id == photographerUrlId;
   });
-  console.log(photographerIndex);
 
   // Display the photographer infos card before the button
   const photographerCardModel = photographerCard(photographers[photographerIndex]);
-  console.log(photographerCardModel);
+  
   const photographCard = photographerCardModel.createPhotographerCard();
-  console.log(photographCard);
+  
   photograph_header.appendChild(photographCard);
 
   // Create an img element and display the photographer portrait 
@@ -49,7 +49,6 @@ async function displayPhotographerCard(photographers) {
   
   let img = document.createElement('img');
   img.setAttribute('src', picture);
-  console.log(img);
   photograph__portrait.appendChild(img);
 }
 
