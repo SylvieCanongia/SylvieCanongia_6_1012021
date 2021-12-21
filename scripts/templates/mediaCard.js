@@ -1,4 +1,4 @@
-function photographerMediaCard(media, name) {
+function mediaCard(media, name) {
   const { id, photographerId, title, image, likes, date, price } = media;
 
   // Get the firstname of the photographer from the complete name

@@ -17,7 +17,7 @@
       src="https://kit.fontawesome.com/356720bd71.js"
       crossorigin="anonymous"
     ></script>
-    
+
     <!-- Styles -->
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -29,8 +29,10 @@
       <img src="assets/images/logo.png" alt="logo" class="logo" />
     </header>
     <main id="main">
-      <div class="photograph-header">
+      <div class="photograph__header">
+        <div class="photograph__header__infos"></div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <div class="photograph__header__portrait"></div>
       </div>
       <section class="photograph__medias">
         <div class="medias__sorting">
@@ -67,7 +69,8 @@
     <script src="scripts/pages/photographer.js"></script>
 
     <!-- Templates -->
-    <script src="scripts/templates/photographerMediaCard.js"></script>
+    <script src="scripts/templates/mediaCard.js"></script>
+    <script src="scripts/templates/photographerCard.js"></script>
     
     <script src="/scripts/utils/contactForm.js"></script>
     
