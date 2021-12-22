@@ -25,7 +25,8 @@ function VideoTag(tag, videoName, url) {
       'elementName': `${tag}`,
       'classIdAttr': {
         'className': "media__cardImg",
-        'src': url
+        'src': url,
+        'controls': 'controls'
       },
       'textContent': undefined,
       'appendTo': "div.media__card__wrapper"
