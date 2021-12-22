@@ -18,3 +18,12 @@
     }
    return element;
   }
+
+
+// Get the extension of a media name
+  const getExtension = (mediaName) => {
+    const regex = new RegExp('[^.]+$');
+    let ext = mediaName.match(regex);
+
+    return ext;
+  }

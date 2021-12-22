@@ -1,6 +1,7 @@
 function VideoTag(tag, videoName, url) {
-  const regex = new RegExp('[^.]+$');
-  let ext = videoName.match(regex);
+  
+  let ext = getExtension(videoName);
+
   if(ext == "mp4") {
     let obj = {
       'elementName': `${tag}`,

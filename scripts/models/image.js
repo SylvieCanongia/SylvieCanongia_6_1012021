@@ -1,6 +1,7 @@
 function ImageTag(tag, imgName, url) {
-  const regex = new RegExp('[^.]+$');
-  let ext = imgName.match(regex);
+
+  let ext = getExtension(imgName);
+  
   if(ext == "jpg") {
     let obj = {
       'elementName': `${tag}`,
