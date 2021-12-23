@@ -27,6 +27,17 @@ function mediaCard(media, name) {
     
     if(media.video) {
       photographerMediaFactory("video", media.video, film);
+      const videoElement = document.querySelectorAll('.video');
+      const playButton = document.querySelectorAll('.playButton');
+      console.log(videoElement);
+      playButton.forEach((button) => {
+          button.addEventListener("click", playVideo);
+      });
+      function playVideo() {
+        videoElement.play();
+      }
+
+      manageMediaControls();
     }
 
     // heading

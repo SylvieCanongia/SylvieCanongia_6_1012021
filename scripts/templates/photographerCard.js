@@ -1,9 +1,10 @@
+// Create the photographer card on photographer.html with all infos
+
 function photographerCard(photographer) {
   const { name, id, city, country, tagline, price, portrait } = photographer;
 
   const picture = `assets/photographers/photographers_id_photos/${portrait}`;
 
-  // Create the photographer card on photographer.html with all infos
   function createPhotographerCard() {
 
     // article element as card wrapper

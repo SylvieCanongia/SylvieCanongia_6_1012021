@@ -21,8 +21,6 @@ const queryString_url = window.location.search;
 
 const urlSearchParams = new URLSearchParams(queryString_url);
 
-
-
 async function displayPhotographerCard(photographers) {
   const photograph_header = document.querySelector(".photograph__header__infos");
   const photograph__portrait = document.querySelector(".photograph__header__portrait");
@@ -36,7 +34,7 @@ async function displayPhotographerCard(photographers) {
     return el.id == photographerUrlId;
   });
 
-  // Display the photographer infos card before the button
+  // Display the photographer card infos (before the button) based on his id
   const photographerCardModel = photographerCard(photographers[photographerIndex]);
   
   const photographCard = photographerCardModel.createPhotographerCard();
@@ -51,6 +49,7 @@ async function displayPhotographerCard(photographers) {
   img.setAttribute('src', picture);
   photograph__portrait.appendChild(img);
 }
+
 
 // === DISPLAY OF THE MEDIAS CARDS ===
 
