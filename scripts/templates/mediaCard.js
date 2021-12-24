@@ -8,6 +8,7 @@ function mediaCard(media, name) {
   const picture = `assets/photographers/${firstname[0]}/${image}`;
   const film = `assets/photographers/${firstname[0]}/${video}`;
 
+  // ==============================================
   // Create the media card with all infos necessary
   function createMediaCard() {
 
@@ -36,7 +37,7 @@ function mediaCard(media, name) {
       function playVideo() {
         videoElement.play();
       }
-
+      
       manageMediaControls();
     }
 

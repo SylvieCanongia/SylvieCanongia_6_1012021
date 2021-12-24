@@ -87,11 +87,11 @@ async function displayMediaData(medias) {
 }
 
 async function init() {
-
+  // Retrieve photographer data and display photographer card
   const { photographers } = await getPhotographerData();
   displayPhotographerCard(photographers);
 
-  // Retrieve medias data
+  // Retrieve medias data and display medias card
   const { medias } = await getMedias();
   displayMediaData(medias);
 }
