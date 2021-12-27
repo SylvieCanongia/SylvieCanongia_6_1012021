@@ -16,7 +16,9 @@ async function getPhotographerData() {
   };
 }
 
+// ===========
 // Get the URL
+
 const queryString_url = window.location.search;
 
 const urlSearchParams = new URLSearchParams(queryString_url);
@@ -82,9 +84,19 @@ async function displayMediaData(medias) {
     const mediasCard = mediasModel.createMediaCard();
     
     mediasSection.appendChild(mediasCard);
+
+    // Sorting of the media with the select
+    // manageMediaSorting(media);
     }
   });
+
+  // function manageMediaSorting(media) {
+  //   console.log(media);
+  //   return mediaSorting(media);
+  // }
 }
+
+
 
 async function init() {
   // Retrieve photographer data and display photographer card
