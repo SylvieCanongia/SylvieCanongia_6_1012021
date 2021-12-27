@@ -109,6 +109,15 @@ h2 {
     align-items: center;
 }
 
+.link__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+}
+
 .photographer__card__content__wrapper {
     position: absolute;
     top: 0;

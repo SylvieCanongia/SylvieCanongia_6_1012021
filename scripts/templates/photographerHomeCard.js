@@ -11,14 +11,17 @@ function photographerHomeCard(photographer) {
     let article = createElement('article', {className: 'photographer__card'}, undefined, 'div.photographer__section');
 
     // link wrapper of the card content. Insert the photographer name and id in the url parameters
-    createElement('a', {className: 'photographer__card__content__wrapper', href: `./photographer.html?name=${name}&id=${id}`}, undefined, 'article');
+    createElement('a', {className: 'photographer__card__content__wrapper', href: `./photographer.html?name=${name}&id=${id}`}, undefined, 'div.link__container');
+
+    // create a wrapper for img and heading link to the photographer page
+    createElement('div', {className: 'link__container'}, undefined, 'article');
 
     // img and its wrapper
-    createElement('div', {className: 'cardImg__wrapper'}, undefined, 'article');
-    createElement('img', {className: 'cardImg', src: picture}, undefined, 'div.cardImg__wrapper');
+    createElement('div', {className: 'cardImg__wrapper'}, undefined, 'div.link__container');
+    let img= createElement('img', {className: 'cardImg', src: picture, alt:''}, undefined, 'div.cardImg__wrapper');
 
     // heading
-    createElement('h2', {className: 'cardHeading'}, name, 'article');
+    createElement('h2', {className: 'cardHeading'}, name, 'div.link__container');
 
     // div that contains all texts except heading
     createElement('div', {className: 'cardText'}, undefined, 'article');
