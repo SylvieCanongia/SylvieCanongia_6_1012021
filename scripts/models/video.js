@@ -52,9 +52,4 @@ function VideoTag(tag, videoName, url) {
   }
 }
 
-// videoWrapperElement.addEventListener("click", playVideo);
-
-// function playVideo() {
-//   videoElement.play();
-// }
-
+export { VideoTag};

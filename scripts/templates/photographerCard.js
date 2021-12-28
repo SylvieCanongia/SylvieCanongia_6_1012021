@@ -22,5 +22,7 @@ function photographerCard(photographer) {
     return (article);
   }
 
-return { name, id, city, country, tagline, price, picture, createPhotographerCard }
+  return { name, id, city, country, tagline, price, picture, createPhotographerCard }
 }
+
+export { photographerCard };

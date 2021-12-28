@@ -1,3 +1,6 @@
+import { photographerCard } from './../templates/photographerCard.js';
+import { mediaCard } from './../templates/mediaCard.js';
+
 // === DISPLAY OF THE PHOTOGRAPHER CARD ===
 
 async function getPhotographerData() {

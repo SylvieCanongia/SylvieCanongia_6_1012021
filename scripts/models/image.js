@@ -18,3 +18,5 @@ function ImageTag(imgTag, imgName, url) {
     console.log("Sorry, this is not a valid format of image");
   }
 }
+
+export { ImageTag };

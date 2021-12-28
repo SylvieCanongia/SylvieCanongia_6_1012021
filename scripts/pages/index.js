@@ -1,3 +1,5 @@
+import { photographerHomeCard } from './../templates/photographerHomeCard.js';
+
 async function getPhotographers() {
   let photographers;
 

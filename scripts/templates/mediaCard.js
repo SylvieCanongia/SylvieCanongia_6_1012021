@@ -1,3 +1,5 @@
+import { photographerMediaFactory } from './../factories/photographerMediaFactory.js';
+
 function mediaCard(media, name) {
   const { id, photographerId, title, image, video, likes, date, price } = media;
 
@@ -55,3 +57,5 @@ function mediaCard(media, name) {
 
 return { id, photographerId, title, image, likes, date, price, createMediaCard }
 }
+
+export { mediaCard };

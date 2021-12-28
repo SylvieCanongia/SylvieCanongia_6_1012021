@@ -34,3 +34,5 @@ function photographerHomeCard(photographer) {
 
 return { name, id, city, country, tagline, price, createHomeCard }
 }
+
+export { photographerHomeCard };
