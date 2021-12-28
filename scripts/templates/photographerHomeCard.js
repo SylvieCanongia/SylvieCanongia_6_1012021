@@ -10,11 +10,11 @@ function photographerHomeCard(photographer) {
     // article element as card wrapper
     let article = createElement('article', {className: 'photographer__card'}, undefined, 'div.photographer__section');
 
-    // link wrapper of the card content. Insert the photographer name and id in the url parameters
-    createElement('a', {className: 'photographer__card__content__wrapper', href: `./photographer.html?name=${name}&id=${id}`}, undefined, 'div.link__container');
-
     // create a wrapper for img and heading link to the photographer page
     createElement('div', {className: 'link__container'}, undefined, 'article');
+
+     // link wrapper of the card content. Insert the photographer name and id in the url parameters
+     createElement('a', {className: 'photographer__card__content__wrapper', href: `./photographer.html?name=${name}&id=${id}`}, undefined, 'div.link__container');
 
     // img and its wrapper
     createElement('div', {className: 'cardImg__wrapper'}, undefined, 'div.link__container');
