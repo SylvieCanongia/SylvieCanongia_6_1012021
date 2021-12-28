@@ -14,11 +14,11 @@ function photographerHomeCard(photographer) {
     createElement('div', {className: 'link__container'}, undefined, 'article');
 
      // link wrapper of the card content. Insert the photographer name and id in the url parameters
-     createElement('a', {className: 'photographer__card__content__wrapper', href: `./photographer.html?name=${name}&id=${id}`}, undefined, 'div.link__container');
+     createElement('a', {className: 'photographer__card__content__wrapper', href: `./photographer.html?name=${name}&id=${id}`, ariaLabel: name}, undefined, 'div.link__container');
 
     // img and its wrapper
     createElement('div', {className: 'cardImg__wrapper'}, undefined, 'div.link__container');
-    let img= createElement('img', {className: 'cardImg', src: picture, alt:''}, undefined, 'div.cardImg__wrapper');
+    createElement('img', {className: 'cardImg', src: picture, alt: ''}, undefined, 'div.cardImg__wrapper');
 
     // heading
     createElement('h2', {className: 'cardHeading'}, name, 'div.link__container');

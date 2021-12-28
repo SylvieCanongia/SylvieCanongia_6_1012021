@@ -1,13 +1,14 @@
-function ImageTag(tag, imgName, url) {
+function ImageTag(imgTag, imgName, url) {
 
   let ext = getExtension(imgName);
   
   if(ext == "jpg") {
     let obj = {
-      'elementName': `${tag}`,
+      'elementName': `${imgTag}`,
       'classIdAttr': {
         'className': "media__cardImg",
-        'src': url
+        'src': url,
+        'alt': ''
       },
       'textContent': undefined,
       'appendTo': "div.media__card__wrapper"

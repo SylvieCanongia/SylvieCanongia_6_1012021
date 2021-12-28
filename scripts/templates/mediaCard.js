@@ -15,11 +15,11 @@ function mediaCard(media, name) {
     // article element as card wrapper. Use of the function createElement to create various elements
     let article = createElement('article', {className: 'media__card'}, undefined, 'div.medias__section');
 
-    // link wrapper of the card content
-    // createElement('a', {className: 'media__card__content__wrapper', href: `./photographer.html?id=${id}`}, undefined, 'article');
-
     // img and its wrapper
     createElement('div', {className: 'media__card__wrapper'}, undefined, 'article');
+
+    // link wrapper of the img
+    createElement('a', {className: 'media__card__img__wrapper', href: ``, ariaLabel: `${title}, vue rapprochée`}, undefined, 'div.media__card__wrapper');
 
     //  Create img or video element in function of the type of the element
     if(media.image){

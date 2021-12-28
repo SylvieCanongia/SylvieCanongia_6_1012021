@@ -25,7 +25,6 @@ const urlSearchParams = new URLSearchParams(queryString_url);
 
 async function displayPhotographerCard(photographers) {
   const photograph_header = document.querySelector(".photograph__header__infos");
-  const photograph__portrait = document.querySelector(".photograph__header__portrait");
 
   let photographerUrlId = urlSearchParams.get('id');
   
@@ -47,9 +46,7 @@ async function displayPhotographerCard(photographers) {
   let portrait = photographers[photographerIndex].portrait;
   let picture = `assets/photographers/photographers_id_photos/${portrait}`;
   
-  let img = document.createElement('img');
-  img.setAttribute('src', picture);
-  photograph__portrait.appendChild(img);
+  createElement('img', {ariaLabel: name, src: picture}, undefined, '.photograph__header__portrait' )
 }
 
 
