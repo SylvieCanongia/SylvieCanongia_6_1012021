@@ -7,7 +7,7 @@ function photographerCard(photographer) {
 
   function createPhotographerCard() {
 
-    // article element as card wrapper
+    // article element as card wrapper placed into the div to be positioned before the button in the DOM
     let article = createElement('article', {className: 'header__infos__card'}, undefined, 'div.photograph__header__infos');
 
     // heading

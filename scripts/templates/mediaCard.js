@@ -20,8 +20,14 @@ function mediaCard(media, name) {
     // img and its wrapper
     createElement('div', {className: 'media__card__wrapper'}, undefined, 'article');
 
-    // link wrapper of the img
-    createElement('a', {className: 'media__card__img__wrapper', href: ``, ariaLabel: `${title}, vue rapprochée`}, undefined, 'div.media__card__wrapper');
+    // link wrapper of the img or the video
+    if(media.image){
+      createElement('a', {className: 'media__card__img__wrapper', href: picture, ariaLabel: `Vue rapprochée de l'image`}, undefined, 'div.media__card__wrapper');
+    }
+
+    if(media.video) {
+    createElement('a', {className: 'media__card__img__wrapper', href: film, ariaLabel: `Vue rapprochée de la vidéo`}, undefined, 'div.media__card__wrapper');
+    }
 
     //  Create img or video element in function of the type of the element
     if(media.image){

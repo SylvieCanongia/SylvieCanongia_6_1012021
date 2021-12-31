@@ -1,5 +1,6 @@
 import { photographerCard } from './../templates/photographerCard.js';
 import { mediaCard } from './../templates/mediaCard.js';
+import { lightboxModal } from './../pages/lightboxModal.js';
 
 // === DISPLAY OF THE PHOTOGRAPHER CARD ===
 
@@ -96,8 +97,6 @@ async function displayMediaData(medias) {
   // }
 }
 
-
-
 async function init() {
   // Retrieve photographer data and display photographer card
   const { photographers } = await getPhotographerData();
@@ -106,6 +105,8 @@ async function init() {
   // Retrieve medias data and display medias card
   const { medias } = await getMedias();
   displayMediaData(medias);
+
+  lightboxModal();
 }
 
 init();
