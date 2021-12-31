@@ -22,54 +22,55 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-   
+    <link href="css/lightbox.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <header>
-      <a href="index.html"><img src="assets/images/logo.png" alt="Fisheye Home page" class="logo" /></a>
-    </header>
-    <main id="main">
-      <div class="photograph__header">
-        <div class="photograph__header__infos"></div>
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-        <div class="photograph__header__portrait"></div>
-      </div>
-      <section class="photograph__medias">
-        <div class="medias__sorting">
-          <label id="orderBy">Trier par :
-            <select name="sorting__list" id="sorting__list" aria-labelledby="orderBy sorting__list">
-              <option value="popularity">Popularité</option>
-              <option value="date">Date</option>
-              <option value="title">Titre</option>
-            </select>
-          </label>
+    <div class="page__wrapper">
+      <header class="medias__header">
+        <a href="index.html"><img src="assets/images/logo.png" alt="Fisheye Home page" class="logo" /></a>
+      </header>
+      <main id="main">
+        <div class="photograph__header">
+          <div class="photograph__header__infos"></div>
+          <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+          <div class="photograph__header__portrait"></div>
         </div>
-        <div class="medias__section"></div>
-      </section>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" alt="Fermer" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    
-    <script src="scripts/utils/contactForm.js"></script>
-    <script src="scripts/utils/functions.js"></script>
-    <script src="scripts/utils/custom-player.js"></script>
+        <section class="photograph__medias">
+          <div class="medias__sorting">
+            <label id="orderBy">Trier par :
+              <select name="sorting__list" id="sorting__list" aria-labelledby="orderBy sorting__list">
+                <option value="popularity">Popularité</option>
+                <option value="date">Date</option>
+                <option value="title">Titre</option>
+              </select>
+            </label>
+          </div>
+          <div class="medias__section"></div>
+        </section>
+      </main>
+      <div id="contact_modal">
+        <div class="modal">
+          <header>
+            <h2>Contactez-moi</h2>
+            <img src="assets/icons/close.svg" alt="Fermer" onclick="closeModal()" />
+          </header>
+          <form>
+            <div>
+              <label>Prénom</label>
+              <input />
+            </div>
+            <button class="contact_button">Envoyer</button>
+          </form>
+        </div>
+      </div>
+      
+      <script src="scripts/utils/contactForm.js"></script>
+      <script src="scripts/utils/functions.js"></script>
+      <script src="scripts/utils/custom-player.js"></script>
 
-     <!-- pages -->
-     <script type="module" src="scripts/pages/photographer.js"></script>
+      <!-- pages -->
+      <script type="module" src="scripts/pages/photographer.js"></script>
 
-    
+    </div>
   </body>
 </html>
