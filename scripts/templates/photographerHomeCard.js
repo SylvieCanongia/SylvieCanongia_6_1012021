@@ -1,3 +1,5 @@
+import { createElement } from './../utils/functions.js';
+
 function photographerHomeCard(photographer) {
   const { name, id, city, country, tagline, price, portrait } = photographer;
 

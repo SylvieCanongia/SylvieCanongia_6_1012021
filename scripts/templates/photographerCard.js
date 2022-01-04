@@ -1,3 +1,5 @@
+import { createElement } from './../utils/functions.js';
+
 // Create the photographer card on photographer.html with all infos
 
 function photographerCard(photographer) {

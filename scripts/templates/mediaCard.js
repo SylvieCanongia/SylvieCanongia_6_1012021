@@ -1,11 +1,12 @@
 import { photographerMediaFactory } from './../factories/photographerMediaFactory.js';
 
+import { createElement } from './../utils/functions.js';
+
 function mediaCard(media, name) {
   const { id, photographerId, title, image, video, likes, date, price } = media;
 
   // Get the firstname of the photographer from the complete name
   const firstname = name.split(" ");
-  // console.log(firstname[0]);
 
   const picture = `assets/photographers/${firstname[0]}/${image}`;
   const film = `assets/photographers/${firstname[0]}/${video}`;
@@ -29,7 +30,7 @@ function mediaCard(media, name) {
     createElement('a', {className: 'media__card__img__wrapper', href: film, ariaLabel: `Vue rapprochée de la vidéo`}, undefined, 'div.media__card__wrapper');
     }
 
-    //  Create img or video element in function of the type of the element
+    // Create img or video element in function of the type of the element
     if(media.image){
       photographerMediaFactory("image", media.image, picture);
     }
@@ -37,7 +38,7 @@ function mediaCard(media, name) {
     if(media.video) {
       photographerMediaFactory("video", media.video, film);
       const videoElement = document.querySelectorAll('.video');
-      const playButton = document.querySelectorAll('.playButton');
+      const playButton = document.querySelectorAll('.playPauseButton');
       
       playButton.forEach((button) => {
           button.addEventListener("click", playVideo);
@@ -46,11 +47,12 @@ function mediaCard(media, name) {
         videoElement.play();
       }
       
-      manageMediaControls();
+      manageMediaControls('photographer');
     }
 
     // heading
-    createElement('h2', {className: 'media__CardHeading'}, title, 'article');
+    createElement('h2', {className: 'media__CardHeading'}, undefined, 'article');
+    createElement('div', {className: 'media__CardHeading__h2'}, title, 'h2.media__CardHeading')
 
     createElement('div', {className: 'media__likes__wrapper'}, undefined, 'h2.media__CardHeading');
 

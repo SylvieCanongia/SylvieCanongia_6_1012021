@@ -1,3 +1,5 @@
+import { createElement, getExtension } from './../utils/functions.js';
+
 function ImageTag(imgTag, imgName, url) {
 
   let ext = getExtension(imgName);

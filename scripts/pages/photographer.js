@@ -1,27 +1,21 @@
+// Photographers and medias from json file
+import { getPhotographers } from './../data/photographersData.js';
+import { getMedias } from './../data/mediasData.js';
+
+// Photographer card template
 import { photographerCard } from './../templates/photographerCard.js';
+
+// Medias cards template
 import { mediaCard } from './../templates/mediaCard.js';
-import { lightboxModal } from './../pages/lightboxModal.js';
+import { launchLightboxModal } from './../pages/lightboxModal.js';
+
+import { createElement } from './../utils/functions.js';
+
 
 // === DISPLAY OF THE PHOTOGRAPHER CARD ===
+// Using import of photographers and medias data above
 
-async function getPhotographerData() {
-  let photographers;
-
-  await fetch("./data/photographers.json")
-    .then((res) => res.json())
-    .then((res) => {
-      res.photographers;
-      photographers = res.photographers;
-    })
-    .catch((err) => console.log("an error occurs", err));
-
-  return {
-    photographers,
-  };
-}
-
-// ===========
-// Get the URL
+// GET THE URL
 
 const queryString_url = window.location.search;
 
@@ -56,22 +50,6 @@ async function displayPhotographerCard(photographers) {
 
 // === DISPLAY OF THE MEDIAS CARDS ===
 
-async function getMedias() {
-  let medias;
-
-  await fetch("./data/photographers.json")
-    .then((res) => res.json())
-    .then((res) => {
-      res.medias;
-      medias = res.medias;
-    })
-    .catch((err) => console.log("an error occurs", err));
-    
-  return {
-    medias
-  };
-}
-
 async function displayMediaData(medias) {
   const mediasSection = document.querySelector(".medias__section");
 
@@ -99,14 +77,14 @@ async function displayMediaData(medias) {
 
 async function init() {
   // Retrieve photographer data and display photographer card
-  const { photographers } = await getPhotographerData();
+  const { photographers } = await getPhotographers();
   displayPhotographerCard(photographers);
 
   // Retrieve medias data and display medias card
   const { medias } = await getMedias();
   displayMediaData(medias);
 
-  lightboxModal();
+  launchLightboxModal();
 }
 
 init();

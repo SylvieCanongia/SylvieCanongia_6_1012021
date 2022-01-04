@@ -1,16 +1,20 @@
-const manageMediaControls = () => {
-  const video = document.querySelector("video.video");
 
-  const controls = document.querySelector(".controls");
+/**
+ * 
+ * @param {String} classPrefix the prefix of the classes names (for avoiding multi pages selection)
+ * @returns {} Activate all the controls of the video with play, pause, stop, forward and reward buttons
+ */
+const manageMediaControls = (classPrefix) => {
 
-  const play = document.querySelector(".playPauseButton");
-  const stop = document.querySelector(".stopButton");
-  const reward = document.querySelector(".rewardButton");
-  const forward = document.querySelector(".forwardButton");
-
-  const timerWrapper = document.querySelector(".timer");
-  const timer = document.querySelector(".timer span");
-  const timerBar = document.querySelector(".timer div");
+  const video = document.querySelector(`.${classPrefix}-video`);
+  const controls = document.querySelector(`.${classPrefix}-controls`);
+  const play = document.querySelector(`.${classPrefix}-playPauseButton`);
+  const stop = document.querySelector(`.${classPrefix}-stopButton`);
+  const reward = document.querySelector(`.${classPrefix}-rewardButton`);
+  const forward = document.querySelector(`.${classPrefix}-forwardButton`);
+  const timerWrapper = document.querySelector(`.${classPrefix}-timer`);
+  const timer = document.querySelector(`.${classPrefix}-timer span`);
+  const timerBar = document.querySelector(`.${classPrefix}-timer div`);
 
   // remove the default browser controls on the video, and make our custom controls visible.
   video.removeAttribute("controls");
