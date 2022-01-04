@@ -8,7 +8,7 @@ import { createElement, getExtension } from './../utils/functions.js';
 
  // Retrieve medias data and display medias card
  const { medias } = await getMedias();
- 
+
 
 function lightboxModal(medias) {
     const links = document.querySelectorAll('.media__card__img__wrapper');
@@ -25,6 +25,7 @@ function lightboxModal(medias) {
 
     // Launch the function loadImage to display loader and then image
     links.forEach(link => link.addEventListener('click', loadImage));
+
    
     /**
      * 
@@ -88,14 +89,23 @@ function lightboxModal(medias) {
     // Close the lightbox by click on the button
       const closeLightbox = document.querySelector('.lightbox__close');
       closeLightbox.addEventListener('click', close);
+      document.addEventListener('keyup', onKeyUp);
 
     /**
      * 
-     * @param {MouseEvent} event Close the lightbox
+     * @param {MouseEvent} event
+     * @description Close the lightbox
      */
     function close(event) {
       event.preventDefault();
       lightbox__wrapper.remove();
+      document.removeEventListener('keyup', onKeyUp);
+    }
+
+    function onKeyUp(event) {
+      if (event.key === 'Escape') {
+        close(event);
+      }
     }
   }
     return { links, loadImage };
