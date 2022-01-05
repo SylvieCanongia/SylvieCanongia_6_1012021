@@ -1,5 +1,9 @@
 import { createElement } from './../utils/functions.js';
 
+/**
+ * Call the function buildLightbox that builds the lightbox template
+ * @returns Function that builds the lightbox template
+ */
 function lightbox() {
 
 /**
