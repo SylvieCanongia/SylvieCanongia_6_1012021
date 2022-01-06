@@ -2,6 +2,9 @@
     display: none;
 }
 
+/* =========================== */
+/* PHOTOGRAPH HEADER */
+
 .photograph__header {
     display: grid;
     grid-template-columns: 1.1fr 0.8fr 1.1fr;
@@ -148,6 +151,35 @@
     .header__infos__heading {
         font-size: 2.3rem;
     }
+}
+
+/* ========================= */
+/* PHOTOGRAPH MEDIAS */
+
+/* === MEDIAS SORTING === */
+select {
+    position: relative;
+    border-radius: 5px;
+    border-color: #901C1C;
+    outline: none ;
+    background-color: #901C1C;
+    font-size: 20px;
+    color: white;
+    padding: 11px;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.popularity, .date, .title {
+    font-size: 20px;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 /* === MEDIAS SECTION === */
