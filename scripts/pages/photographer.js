@@ -49,7 +49,6 @@ async function displayPhotographerCard(photographers) {
   createElement('img', { ariaLabel: name, src: picture }, undefined, '.photograph__header__portrait' )
 }
 
-
 // === DISPLAY OF THE MEDIAS CARDS ===
 
 async function displayMediaData(medias) {
@@ -58,15 +57,18 @@ async function displayMediaData(medias) {
   let photographerUrlId = urlSearchParams.get('id');
   let name = urlSearchParams.get('name');
   let mediasArray = [];
+
+  // Sorts the media by popularity because option 'popularity' is by default on select
+  medias.sort(function (a, b) {
+    return a.likes - b.likes;
+  });
   
+  // Create the media cards and display them on the page
   medias.forEach((media) => {
-    
     if (media.photographerId == photographerUrlId) {
     const mediasModel = mediaCard(media, name);
     const mediasCard = mediasModel.createMediaCard();
-    
     mediasSection.appendChild(mediasCard);
-
     // Create an array with all the photographer medias
     mediasArray.push(media);
     }
@@ -74,9 +76,8 @@ async function displayMediaData(medias) {
 
   // SORTING OF THE PHOTOGRAPHER'S MEDIAS via the select
   let selectElement = document.querySelector('#sorting__list');
-  console.log(selectElement);
-  console.log(mediasArray);
   selectElement.addEventListener('change', manageSorting);
+
   function manageSorting(event) {
     sorting(event, mediasArray);
     
@@ -89,7 +90,10 @@ async function displayMediaData(medias) {
       
       mediasSection.appendChild(mediasCard);
     });
-    selectElement.removeEventListener('change', manageSorting);
+
+    // Launch the lightbox with sorted medias
+    launchLightboxModal();
+    // selectElement.removeEventListener('change', manageSorting);
   }
 }
 

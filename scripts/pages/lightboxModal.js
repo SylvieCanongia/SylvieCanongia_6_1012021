@@ -15,9 +15,6 @@ function lightboxModal(medias) {
   const links = Array.from(document.querySelectorAll('.media__card__img__wrapper'));
   // let imagesUrls = links.map(link => link.getAttribute('href'));
   const headings = Array.from(document.querySelectorAll('.media__CardHeading__h2'));
-  
-
-  // console.log(links);
 
   // Launch the function get Lightbox that creates the lightbox template
   links.forEach(link => link.addEventListener('click', getLightbox));
@@ -133,6 +130,7 @@ function lightboxModal(medias) {
     function onKeyUp(event) {
       if (event.key === 'Escape') {
         close(event);
+        // document.removeEventListener('keyup', onKeyUp);
       }
     }
 
@@ -151,21 +149,17 @@ function lightboxModal(medias) {
       // console.log(event.currentTarget);
       let currentIndex = imagesUrls.findIndex(mediaUrl => mediaUrl === url);
       
-      console.log(imagesUrls);
-      // console.log(imagesUrls.length);
-      // console.log(url);
-      // console.log(currentIndex);
+      // console.log(imagesUrls);
+    
       let nextUrl;
       let nextHeading;
       if (currentIndex == imagesUrls.length -1) {
         currentIndex = -1;
       }
-        nextUrl = imagesUrls[currentIndex + 1];
-        nextHeading = headings[currentIndex + 1].textContent;
-        // console.log(nextUrl);
-        // console.log(nextHeading);
-        // console.log(currentIndex + 1);
-      // currentIndex = "";
+
+      nextUrl = imagesUrls[currentIndex + 1];
+      nextHeading = headings[currentIndex + 1].textContent;
+        
         // Remove the heading and media before creating the following
       const lightboxMedia = document.querySelector('.lightbox-media');
       const lightboxHeading = document.querySelector('.lightbox__heading');
@@ -188,10 +182,8 @@ function lightboxModal(medias) {
       event.preventDefault();
       // console.log(event.currentTarget);
       let currentIndex = imagesUrls.findIndex(mediaUrl => mediaUrl === url);
-      console.log(imagesUrls);
-      // console.log(imagesUrls.length);
-      // console.log(url);
-      // console.log(currentIndex);
+      // console.log(imagesUrls);
+      
       let previousUrl;
       let previousHeading;
       if (currentIndex == 0) {
