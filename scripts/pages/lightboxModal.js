@@ -13,12 +13,11 @@ import { createElement, getExtension } from './../utils/functions.js';
 function lightboxModal(medias) {
 
   const links = Array.from(document.querySelectorAll('.media__card__img__wrapper'));
-  const imagesUrls = links.map(link => link.getAttribute('href'));
+  // let imagesUrls = links.map(link => link.getAttribute('href'));
   const headings = Array.from(document.querySelectorAll('.media__CardHeading__h2'));
-  console.log(headings);
+  // console.log(headings);
 
-  console.log(links);
-  console.log(imagesUrls);
+  // console.log(links);
 
   // Launch the function get Lightbox that creates the lightbox template
   links.forEach(link => link.addEventListener('click', getLightbox));
@@ -42,7 +41,7 @@ function lightboxModal(medias) {
    * @param {MouseEvent} event
    */
   function targetImage(event) {
-    console.log(event);
+    // console.log(event);
   
     let url = event.currentTarget.getAttribute('href');
 
@@ -54,6 +53,7 @@ function lightboxModal(medias) {
   }
 
   function loadImage(heading, url) {
+    let imagesUrls = links.map(link => link.getAttribute('href'));
     const container = document.querySelector('.lightbox__container');
     container.innerHTML = "";
   
@@ -70,28 +70,29 @@ function lightboxModal(medias) {
     getImage(heading, url);
 
     function getImage(heading, url) {
-      
       if(ext == "jpg"){
         lightboxFactory("image", heading , url);
 
-        const media = document.querySelector('.lightbox img');
+        const imageElement = document.querySelector('.lightbox-media');
 
         createElement('h2', { className: 'lightbox__imageHeading lightbox__heading'}, heading, 'div.lightbox__container');
         
         // Add a loader into 'container'
         // const loader = createElement('div', {className: 'lightbox__loader'}, undefined, 'div.lightbox__container');
+        // console.log(loader);
         // console.log(container);
         
         // Remove the loader when the image has loaded
-        // media.onload = function() {
-        //   container.removeChild(loader);
+        // imageElement.onload = function() {
+        //     container.removeChild(loader);
         // }
+        // console.log(container);
       }
     
       if(ext == "mp4") {
         lightboxFactory("video", heading, url);
 
-        const videoElement = document.querySelector('.lightbox-video');
+        const videoElement = document.querySelector('.lightbox-media');
         const playButton = container.querySelector('.lightbox-playPauseButton');
 
         createElement('h2', { className: 'lightbox__videoHeading lightbox__heading'}, heading, 'div.lightbox__container');
@@ -101,11 +102,14 @@ function lightboxModal(medias) {
       
         // Add a loader into 'container
         // const loader = createElement('div', {className: 'lightbox__loader'}, undefined, 'div.lightbox__container');
-        
+        // console.log(loader);
+        // console.log(container);
+
         // Remove the loader when the video data have loaded
         // videoElement.onloadedmetadata = function() {
-        //   container.removeChild(loader);
+        //     container.removeChild(loader);
         // }
+        // console.log(container);
       }
     }
 
@@ -146,6 +150,8 @@ function lightboxModal(medias) {
       event.preventDefault();
       // console.log(event.currentTarget);
       let currentIndex = imagesUrls.findIndex(mediaUrl => mediaUrl === url);
+      
+      console.log(imagesUrls);
       // console.log(imagesUrls.length);
       // console.log(url);
       // console.log(currentIndex);
@@ -159,7 +165,7 @@ function lightboxModal(medias) {
         // console.log(nextUrl);
         // console.log(nextHeading);
         // console.log(currentIndex + 1);
-
+      // currentIndex = "";
         // Remove the heading and media before creating the following
       const lightboxMedia = document.querySelector('.lightbox-media');
       const lightboxHeading = document.querySelector('.lightbox__heading');
@@ -170,6 +176,7 @@ function lightboxModal(medias) {
       heading = nextHeading;
       // console.log(heading);
       // console.log(url);
+      document.querySelector('.lightbox__next').removeEventListener('click', next);
       loadImage(heading, url);
     }
 
@@ -181,6 +188,7 @@ function lightboxModal(medias) {
       event.preventDefault();
       // console.log(event.currentTarget);
       let currentIndex = imagesUrls.findIndex(mediaUrl => mediaUrl === url);
+      console.log(imagesUrls);
       // console.log(imagesUrls.length);
       // console.log(url);
       // console.log(currentIndex);
@@ -206,6 +214,7 @@ function lightboxModal(medias) {
       heading = previousHeading;
       // console.log(heading);
       // console.log(url);
+      document.querySelector('.lightbox__prev').removeEventListener('click', previous);
       loadImage(heading, url);
     }
 
