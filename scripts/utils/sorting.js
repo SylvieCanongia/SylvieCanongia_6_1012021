@@ -19,6 +19,17 @@ function sorting(event, mediasArray) {
       });
   }
 
+  if (event.currentTarget.value === "date") {
+    mediasArray.sort(function compare(a, b) {
+      if (a.date < b.date) {
+        return -1;
+      }
+      if (a.date > b.date) {
+        return 1;
+      }
+      return 0;
+    });
+  }
 
   if (event.currentTarget.value === "title") {
     mediasArray.sort(function compare(a, b) {
