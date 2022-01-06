@@ -11,6 +11,8 @@ import { launchLightboxModal } from './../pages/lightboxModal.js';
 
 import { createElement } from './../utils/functions.js';
 
+import { sorting } from './../utils/sorting.js';
+
 
 // === DISPLAY OF THE PHOTOGRAPHER CARD ===
 // Using import of photographers and medias data above
@@ -44,7 +46,7 @@ async function displayPhotographerCard(photographers) {
   let portrait = photographers[photographerIndex].portrait;
   let picture = `assets/photographers/photographers_id_photos/${portrait}`;
   
-  createElement('img', {ariaLabel: name, src: picture}, undefined, '.photograph__header__portrait' )
+  createElement('img', { ariaLabel: name, src: picture }, undefined, '.photograph__header__portrait' )
 }
 
 
@@ -55,6 +57,7 @@ async function displayMediaData(medias) {
 
   let photographerUrlId = urlSearchParams.get('id');
   let name = urlSearchParams.get('name');
+  let mediasArray = [];
   
   medias.forEach((media) => {
     
@@ -64,15 +67,30 @@ async function displayMediaData(medias) {
     
     mediasSection.appendChild(mediasCard);
 
-    // Sorting of the media with the select
-    // manageMediaSorting(media);
+    // Create an array with all the photographer medias
+    mediasArray.push(media);
     }
   });
 
-  // function manageMediaSorting(media) {
-  //   console.log(media);
-  //   return mediaSorting(media);
-  // }
+  // SORTING OF THE PHOTOGRAPHER'S MEDIAS via the select
+  let selectElement = document.querySelector('#sorting__list');
+  console.log(selectElement);
+  console.log(mediasArray);
+  selectElement.addEventListener('change', manageSorting);
+  function manageSorting(event) {
+    sorting(event, mediasArray);
+    
+    mediasSection.innerHTML = "";
+
+    mediasArray.forEach((media) => {
+      
+      const mediasModel = mediaCard(media, name);
+      const mediasCard = mediasModel.createMediaCard();
+      
+      mediasSection.appendChild(mediasCard);
+    });
+    selectElement.removeEventListener('change', manageSorting);
+  }
 }
 
 async function init() {

@@ -15,7 +15,7 @@ function lightboxModal(medias) {
   const links = Array.from(document.querySelectorAll('.media__card__img__wrapper'));
   // let imagesUrls = links.map(link => link.getAttribute('href'));
   const headings = Array.from(document.querySelectorAll('.media__CardHeading__h2'));
-  // console.log(headings);
+  
 
   // console.log(links);
 
