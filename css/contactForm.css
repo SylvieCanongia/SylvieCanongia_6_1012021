@@ -1,0 +1,193 @@
+/* ====================== */
+/* ===== CONTACT FORM ===== */
+/* ====================== */
+
+/* Modal wrapper - Viewport background when modal opened*/
+
+.contactModal__container {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: var(--color-modal-bg);
+}
+
+.contactModal {
+  margin: 5% auto;
+  padding-block: 6px;
+  width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: var(--color-secondary);
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  color: var(--color-black);
+}
+
+@media screen and (max-width: 900px) {
+  .contactModal {
+    max-width: 460px;
+    padding-top: 0;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .contactModal {
+    max-width: 100%;
+    padding-top: 0;
+    margin: 20% auto;
+  }
+}
+
+.contactModal__header {
+  position: relative;
+  padding: 0 6%;
+}
+
+.contactModal__header__title {
+  margin-block-start: 12px;
+}
+
+.contactModal__header__title, h3 {
+  font-weight: normal;
+  font-size: 3rem;
+}
+
+.contactModal__body {
+  padding: 15px 6%;
+  margin: 8px auto;
+}
+
+/* confirmation modal after form validation */
+.modal-confirm {
+  min-height: min(700px, 80vh);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 400;
+  display: grid;
+  align-items: end;
+}
+
+/* Modal form content */
+label {
+  font-family: var(--font-default);
+  color: var(--color-modal-label);
+  font-size: 1.7rem;
+  font-weight: normal;
+  display: inline-block;
+}
+
+input {
+  padding: 8px;
+  border: 0.8px solid var(--color-input-border);
+  outline: none;
+}
+
+.text-control {
+  margin: 0;
+  padding: 8px;
+  width: 100%;
+  border-radius: 4px;
+  font-size: 20px;
+  height: 50px;
+}
+
+.text-control.textarea {
+  /* Prevent the resize of the textarea by click on the bottom right corner */
+  resize: none;
+  height: 130px;
+}
+
+/* Error messages */
+
+.formData[data-error]::after {
+  content: attr(data-error);
+  font-size: 0.7rem;
+  color: var(--color-error);
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  line-height: 0.9;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.formData[data-error-visible="true"]::after {
+  opacity: 1;
+}
+
+.formData[data-error-visible="true"] .text-control {
+  border: 2px solid var(--color-error);
+}
+
+/* ==== Cross to close the modal ==== */
+
+.close {
+  position: absolute;
+  right: 6%;
+  top: 12px;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.close:before,
+.close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 32px;
+  width: 3px;
+  background-color: var(--color-white);
+}
+
+.close:before {
+  transform: rotate(45deg);
+}
+
+.close:after {
+  transform: rotate(-45deg);
+}
+
+/* ==== Button ==== */
+
+.submitButton {
+  background: var(--color-primary);
+  padding: 16px 36px;
+  color: var(--color-white);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: block;
+  margin-top: 0.7rem;
+  border: 0;
+}
+
+.submitButton:hover {
+  background: var(--color-primary-btn-hover);
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .text-control {
+    height: 48px;
+  }
+}

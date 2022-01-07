@@ -24,6 +24,7 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/custom-player.css" rel="stylesheet" type="text/css" />
     <link href="css/lightbox.css" rel="stylesheet" type="text/css" />
+    <link href="css/contactForm.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div class="page__wrapper">
@@ -33,7 +34,7 @@
       <main id="main">
         <div class="photograph__header">
           <div class="photograph__header__infos"></div>
-          <button class="contact_button">Contactez-moi</button>
+          <button class="button contactButton">Contactez-moi</button>
           <div class="photograph__header__portrait"></div>
         </div>
         <section class="photograph__medias">
@@ -48,22 +49,93 @@
           </div>
           <div class="medias__section"></div>
         </section>
-      </main>
-      <div id="contact_modal">
-        <div class="modal">
-          <header>
-            <h2>Contactez-moi</h2>
-            <img src="assets/icons/close.svg" alt="Fermer" />
-          </header>
-          <form>
-            <div>
-              <label>Prénom</label>
-              <input />
+
+        <div class="contactModal__container">
+          <div class="contactModal">
+            <header class="contactModal__header">
+              <h2 class="contactModal__header__title">Contactez-moi</h2>
+              <h3>Mimi Keel</h3>
+              <span class="close"></span>
+            </header>
+            <div class="contactModal__body">
+              <form name="contact" method="get" data-form novalidate>
+                <div
+                  class="formData"
+                  data-formData
+                  data-error
+                  data-error-visible="false"
+                >
+                  <label for="first">Prénom</label>
+                  <input
+                    class="text-control"
+                    type="text"
+                    id="first"
+                    name="first"
+                    data-minlength="2"
+                    data-required
+                    data-validate
+                  />
+                </div>
+                <div
+                  class="formData"
+                  data-formData
+                  data-error
+                  data-error-visible="false"
+                >
+                  <label for="last">Nom</label>
+                  <input
+                    class="text-control"
+                    type="text"
+                    id="last"
+                    name="last"
+                    data-minlength="2"
+                    data-required
+                    data-validate
+                  />
+                </div>
+                <div
+                  class="formData"
+                  data-formData
+                  data-error
+                  data-error-visible="false"
+                >
+                  <label for="email">Email</label>
+                  <input
+                    class="text-control"
+                    type="email"
+                    id="email"
+                    name="email"
+                    data-email
+                    data-required
+                    data-validate
+                  />
+                </div>
+                <div
+                  class="formData"
+                  data-formData
+                  data-error
+                  data-error-visible="false"
+                >
+                  <label for="message">Votre message</label>
+                  <textarea
+                    class="text-control textarea"
+                    id="message"
+                    name="message"
+                    rows="10"
+                    data-minlength="20"
+                    data-maxlength="500"
+                    wrap="hard"
+                    data-message
+                    data-required
+                    data-validate
+                  ></textarea>
+                </div>
+                <input class="submitButton" type="submit" value="Envoyer" />
+              </form>
             </div>
-            <button class="contact_button">Envoyer</button>
-          </form>
+          </div>
         </div>
-      </div>
+      </main>
     </div>
       <script src="scripts/utils/contactForm.js"></script>
       <script src="scripts/utils/custom-player.js"></script>
