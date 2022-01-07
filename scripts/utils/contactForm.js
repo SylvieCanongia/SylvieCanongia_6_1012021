@@ -88,7 +88,6 @@ function validateInput(input) {
   // get the value and formData element for assigning error message
   // (via CSS pseudo-elements)
   const value = input.value;
-  console.log(value);
   const formDataElement = input.closest("[data-formData]");
   // Declare error variable for displaying error messages and assign null by default
   let error = null;
@@ -110,7 +109,6 @@ function validateInput(input) {
       `Ce champ est requis. Veuillez entrer au moins ${input.dataset.minlength} caractères.`
     );
     error = formDataElement.dataset.error;
-    console.log(error);
   }
 
   // Check if input has data-email attribute and if email is not valid with validateEmail function

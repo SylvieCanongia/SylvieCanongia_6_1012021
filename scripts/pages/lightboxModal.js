@@ -149,7 +149,7 @@ function lightboxModal(medias) {
       // console.log(event.currentTarget);
       let currentIndex = imagesUrls.findIndex(mediaUrl => mediaUrl === url);
       
-      // console.log(imagesUrls);
+      console.log(imagesUrls);
     
       let nextUrl;
       let nextHeading;
@@ -182,7 +182,7 @@ function lightboxModal(medias) {
       event.preventDefault();
       // console.log(event.currentTarget);
       let currentIndex = imagesUrls.findIndex(mediaUrl => mediaUrl === url);
-      // console.log(imagesUrls);
+      console.log(imagesUrls);
       
       let previousUrl;
       let previousHeading;
