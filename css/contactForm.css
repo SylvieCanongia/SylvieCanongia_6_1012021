@@ -66,7 +66,7 @@
 
 /* confirmation modal after form validation */
 .modal-confirm {
-  min-height: min(700px, 80vh);
+  min-height: min(700px, 60vh);
   text-align: center;
   font-size: 2rem;
   font-weight: 400;
@@ -75,7 +75,7 @@
 }
 
 /* Modal form content */
-label {
+.contactModal label {
   font-family: var(--font-default);
   color: var(--color-modal-label);
   font-size: 1.7rem;

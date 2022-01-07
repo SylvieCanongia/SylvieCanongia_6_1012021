@@ -53,7 +53,6 @@ if (forms.length > 0) {
   for (let form of forms) {
     // Get all inputs that have to be validated (have data-validate attribute)
     const inputs = form.querySelectorAll("[data-validate]");
-    console.log(inputs);
 
     // Loops trough inputs to check them
     inputs.forEach((input) => {
@@ -181,7 +180,7 @@ function confirmSubmission() {
 
   // 2. Put a p element into the div element
   const pElement = document.createElement("p");
-  pElement.textContent = "Merci d'avoir validé votre inscription";
+  pElement.textContent = "Merci pour votre message. Je vous répondrai dans les meilleurs délais.";
 
   divElement.appendChild(pElement);
 
