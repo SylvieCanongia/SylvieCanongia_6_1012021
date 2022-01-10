@@ -12,6 +12,7 @@ import { launchLightboxModal } from './../pages/lightboxModal.js';
 import { createElement } from './../utils/functions.js';
 
 import { sorting } from './../utils/sorting.js';
+import { manageLikes } from './../utils/likes.js';
 
 
 // === DISPLAY OF THE PHOTOGRAPHER CARD ===
@@ -87,7 +88,6 @@ async function displayMediaData(medias) {
       
       const mediasModel = mediaCard(media, name);
       const mediasCard = mediasModel.createMediaCard();
-      
       mediasSection.appendChild(mediasCard);
     });
 
@@ -95,6 +95,10 @@ async function displayMediaData(medias) {
     launchLightboxModal();
     // selectElement.removeEventListener('change', manageSorting);
   }
+
+  // Function that increment the likes on each media and the total likes on the bottom of the page
+  const _manageLikes = manageLikes();
+  const _manageMediaLikes = _manageLikes.manageMediaLikes();
 }
 
 async function init() {
@@ -107,6 +111,7 @@ async function init() {
   displayMediaData(medias);
 
   launchLightboxModal();
+  manageLikes();
 }
 
 init();
