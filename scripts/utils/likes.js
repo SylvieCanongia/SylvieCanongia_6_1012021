@@ -9,7 +9,7 @@ function manageLikes() {
   const mediaHeartsElements = document.querySelectorAll('.media__heart');
 
   // Total likes element on the bottom of the page
-  const pageLikesElement = document.querySelector('.medias__pageLikes .totalLikes');
+  const pageLikesElement = document.querySelector('.medias__pageLikesPrice .totalLikes');
 
   /**
    * 
@@ -37,11 +37,15 @@ function manageLikes() {
     });
     sumOfLikes = listOfLikes.reduce(function(a, b) { return a + b }, 0);
     // Display of the sum of the likes on the bottom of the page
-    return pageLikesElement.textContent = `${ sumOfLikes } hearts`;
+    return pageLikesElement.textContent = sumOfLikes;
   }
 
   // Display the sum of the likes on the bottom of the page
   pageLikesElement.textContent = sumOfAllMediasLikes();
+  
+  const likesCounter = document.querySelector('.medias__pageLikesPrice');
+  likesCounter.style.top = window.innerHeight - 42 +"px";
+  likesCounter.style.right = "20px";
 
   /**
    * Function called on the click event on the media heart.

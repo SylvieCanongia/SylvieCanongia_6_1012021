@@ -52,8 +52,9 @@ async function displayPhotographerCard(photographers) {
 
 // === DISPLAY OF THE MEDIAS CARDS ===
 
-async function displayMediaData(medias) {
+async function displayMediaData(medias, photographers) {
   const mediasSection = document.querySelector(".medias__section");
+  const pricePerDayElement = document.querySelector('.pricePerDay');
 
   let photographerUrlId = urlSearchParams.get('id');
   let name = urlSearchParams.get('name');
@@ -99,6 +100,14 @@ async function displayMediaData(medias) {
   const _manageLikes = manageLikes();
   // Manage the listeners on the medias heart for incrementing and display of the total
   const _manageMediaLikes = _manageLikes.manageMediaLikes();
+
+  // Insert the price per day after the likes on the bottom of the page
+  photographers.forEach((photographer) => {
+    if (photographer.id == photographerUrlId) {
+      let pricePerDay = photographer.price;
+      pricePerDayElement.textContent = `${pricePerDay}€/jour`;
+    }
+  });
 }
 
 async function init() {
@@ -108,7 +117,7 @@ async function init() {
 
   // Retrieve medias data and display medias card
   const { medias } = await getMedias();
-  displayMediaData(medias);
+  displayMediaData(medias, photographers);
 
   launchLightboxModal();
   manageLikes();
