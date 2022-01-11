@@ -64,7 +64,7 @@ async function displayMediaData(medias) {
     return a.likes - b.likes;
   });
   
-  // Create the media cards and display them on the page
+  // Create the media cards sorted by popularity and display them on the page
   medias.forEach((media) => {
     if (media.photographerId == photographerUrlId) {
     const mediasModel = mediaCard(media, name);
@@ -93,11 +93,11 @@ async function displayMediaData(medias) {
 
     // Launch the lightbox with sorted medias
     launchLightboxModal();
-    // selectElement.removeEventListener('change', manageSorting);
   }
 
   // Function that increment the likes on each media and the total likes on the bottom of the page
   const _manageLikes = manageLikes();
+  // Manage the listeners on the medias heart for incrementing and display of the total
   const _manageMediaLikes = _manageLikes.manageMediaLikes();
 }
 

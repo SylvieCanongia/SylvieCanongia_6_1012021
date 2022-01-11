@@ -1,27 +1,67 @@
+/**
+ * 
+ * @returns { Function } Function that manage the media likes increment on click on the medias heart and the sum of the the likes that is displayed at the bottom of the page
+ */
 function manageLikes() {
-  // Elements of each media
-  const mediaLikes = document.querySelectorAll('.media__likes');
-  const mediaHearts = document.querySelectorAll('.media__heart');
-  // console.log(mediaLikes, mediaHearts);
+  // Dom Elements of each media
+  // nb of likes and heart icon
+  const mediaLikesElements = document.querySelectorAll('.media__likes');
+  const mediaHeartsElements = document.querySelectorAll('.media__heart');
 
-  // Sum of the likes element on the bottom of the page
-  const mediasLikesElement = document.querySelector('.medias__likes');
-  // console.log(mediasLikesElement);
+  // Total likes element on the bottom of the page
+  const pageLikesElement = document.querySelector('.medias__pageLikes .totalLikes');
 
-  const incrementLikes = (event) => {
+  /**
+   * 
+   * @param {MouseEvent} event 
+   * @returns The number of likes of the media, incremented by one.
+   */
+  const incrementMediaLikes = (event) => {
     let heart = event.currentTarget;
-    // Select the number of likes element
+    // Selects the number of likes corresponding to the heart
     let likes = heart.parentElement.querySelector('.media__likes');
-    // Increment of 1 of the number of likes
-    return likes.textContent = Number(likes.textContent) + 1;
+    // Increment by 1 the number of likes
+    likes.textContent =  Number(likes.textContent) + 1;
   }
 
+  /**
+   * Calculates and displays the sum of all the likes of the page at the bottom of the page
+   * @returns { String }
+   */
+  const sumOfAllMediasLikes = () => {
+    let listOfLikes = [];
+    let sumOfLikes = 0;
+    // Creates an array of likes numbers
+    mediaLikesElements.forEach((like) => {
+      listOfLikes.push(Number(like.textContent));
+    });
+    sumOfLikes = listOfLikes.reduce(function(a, b) { return a + b }, 0);
+    // Display of the sum of the likes on the bottom of the page
+    return pageLikesElement.textContent = `${ sumOfLikes } hearts`;
+  }
+
+  // Display the sum of the likes on the bottom of the page
+  pageLikesElement.textContent = sumOfAllMediasLikes();
+
+  /**
+   * Function called on the click event on the media heart.
+   * Re-calculates the new total of the page likes and display it;
+   * @param {MouseEvent} event 
+   */
+  const managePageLikes = (event) => {
+    sumOfAllMediasLikes();
+  }
+
+  /**
+   * Add two listeners on each media heart with click event. The first calls a function that increment
+   * the nb of likes by 1 on click. The second calls the function that calculates and display the sum of all likes
+   * on the bottom of the page 
+   */
   const manageMediaLikes = () => {
-    // Add an event on each heart => function that increment the nb of likes by 1 on click
-    mediaHearts.forEach((mediaHeart) => {
-      mediaHeart.addEventListener('click', incrementLikes);
-      return mediaHeart.textContent;
-    })
+    mediaHeartsElements.forEach((mediaHeart) => {
+      mediaHeart.addEventListener('click', incrementMediaLikes);
+      mediaHeart.addEventListener('click', managePageLikes);
+    });
   }
   return { manageMediaLikes }
 }
