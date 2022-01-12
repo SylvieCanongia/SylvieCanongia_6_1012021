@@ -55,29 +55,12 @@ if (forms.length > 0) {
     // Get all inputs that have to be validated (have data-validate attribute)
     const inputs = form.querySelectorAll("[data-validate]");
 
-    // Loops trough inputs to check them
-    inputs.forEach((input) => {
-      // Add input event to all inputs to check them with checkInput function
-      input.addEventListener("submit", checkInput);
-    });
-
     // Listen the form submit event and submit the form
     // bind allow to pass all inputs as argument
     form.addEventListener("submit", submitForm.bind(form, inputs));
   }
 }
 
-// ===================
-// === CHECK INPUT ===
-// ===================
-
-// Check input
-function checkInput() {
-    console.log("entrée dans checkInput)");
-  const input = this;
-  validateInput(input);
-  console.log(input)
-}
 
 // ======================
 // === VALIDATE INPUT ===
@@ -160,6 +143,7 @@ function submitForm(inputs, event) {
 
   // Check if errors array is empty and only in that case, form is submited
   if (errors.length === 0) {
+    logDatas();
     // reset the form
     formElement.reset();
     confirmSubmission();
@@ -217,3 +201,14 @@ function closeConfirmModal() {
   modalbg.style.display = "none";
 }
 
+// ========================================
+// === Get the form datas ===
+// === and display them in the console ====
+// ========================================
+
+function logDatas() {
+  const datas = document.querySelectorAll('[data-validate]');
+  datas.forEach(data => {
+    console.log(`${data.name} : ${data.value}`);
+  })
+}
