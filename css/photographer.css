@@ -196,6 +196,7 @@ option:hover {
 /* === MEDIAS SECTION === */
 
 .medias__section {
+    position: relative;
     display: grid;
     /* grid-template-columns: 1fr 1fr 1fr; */
     /* fluid grid : min-width = 280px or 100% / max-width = 1fr */
@@ -262,7 +263,7 @@ option:hover {
 
 .medias__pageLikesPrice {
     position: fixed;
-   /* See top and right positions in likes.js*/
+   /* See position top and right positions in likes.js almost line 46*/
    height: 46px;
    width: 16rem;
    background: var(--color-secondary);

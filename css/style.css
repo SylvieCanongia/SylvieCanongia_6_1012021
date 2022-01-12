@@ -60,7 +60,7 @@ body {
 }
 
 .page__wrapper {
-        margin-inline: var(--margin-gap);
+    margin-inline: var(--margin-gap);
 }
 
 a {
