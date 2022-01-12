@@ -1,13 +1,3 @@
-// function displayModal() {
-//     const modal = document.getElementById("contact_modal");
-// 	modal.style.display = "block";
-// }
-
-// function closeModal() {
-//     const modal = document.getElementById("contact_modal");
-//     modal.style.display = "none";
-// }
-
 // DOM Elements
 const modalbg = document.querySelector(".contactModal__container");
 const modalBtn = document.querySelectorAll(".contactButton");
@@ -17,6 +7,10 @@ const closeModalCrossElement = document.querySelector(".close");
 const forms = document.querySelectorAll("form[data-form]");
 const formElement = document.querySelector("form[data-form]");
 const modalBodyElement = document.querySelector(".contactModal__body");
+
+// Managing of the errors
+let error;
+let errors;
 
 // ==============================================
 // === Modal subscription opening and closing ===
@@ -37,6 +31,13 @@ function launchModal() {
 
 // function to close the modal
 const closeModal = () => {
+  // Removes the error messages
+  formData.forEach(formD => {
+    formD.setAttribute("data-error-visible", "false");
+    formD.setAttribute("data-error", "");
+  });
+  error = "";
+  // Close the modal
   modalbg.style.display = "none";
 }
 
@@ -89,7 +90,7 @@ function validateInput(input) {
   const value = input.value;
   const formDataElement = input.closest("[data-formData]");
   // Declare error variable for displaying error messages and assign null by default
-  let error = null;
+  error = null;
 
   // Check if : -> if the input is not radio or checkbox
   // -> and input has data-required attribute
@@ -148,7 +149,7 @@ function validateInput(input) {
 // and call validateInput on each input element
 function submitForm(inputs, event) {
   event.preventDefault();
-  const errors = [];
+  errors = [];
 
   inputs.forEach((input) => {
     const error = validateInput(input);
