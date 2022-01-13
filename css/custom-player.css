@@ -43,7 +43,7 @@
 .lightbox-controls button {
   background: transparent;
   border: 0;
-  outline: none;
+  /* outline: none; */
   flex: 1;
 }
 

@@ -26,9 +26,15 @@
   background: var(--color-secondary);
   border-radius: 5px;
   overflow: hidden;
+  -webkit-overflow-scrolling: touch;
   position: relative;
   color: var(--color-black);
 }
+
+/* .contactModal[aria-hidden='true'] {
+  visibility: hidden;
+  opacity: 0;
+} */
 
 @media screen and (max-width: 900px) {
   .contactModal {
@@ -50,13 +56,19 @@
   padding: 0 6%;
 }
 
-.contactModal__header__title {
+#modalTitle1 {
   margin-block-start: 12px;
+  color: var(--color-black);
+  margin-right: 0;
 }
 
-.contactModal__header__title, h3 {
+#modalTitle1, #modalTitle2 {
   font-weight: normal;
-  font-size: 3rem;
+  font-size: 2.7rem;
+}
+
+#modalTitle2 {
+  margin-block-start: 0;
 }
 
 .contactModal__body {
@@ -86,7 +98,7 @@
 input {
   padding: 8px;
   border: 0.8px solid var(--color-input-border);
-  outline: none;
+  /* outline: none; */
 }
 
 .text-control {

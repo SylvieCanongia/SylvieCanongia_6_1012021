@@ -2,6 +2,7 @@
     display: none;
 }
 
+
 /* =========================== */
 /* PHOTOGRAPH HEADER */
 
@@ -162,11 +163,10 @@
 }
 
 select {
-    /* appearance: none; */
     position: relative;
     border-radius: 5px;
     border-color: #901C1C;
-    outline: none ;
+    /* outline: none ; */
     background-color: #901C1C;
     font-size: 20px;
     color: white;

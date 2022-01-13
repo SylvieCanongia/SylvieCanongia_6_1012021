@@ -61,7 +61,7 @@ function manageLikes() {
   });
   
   // Observe one or multiple elements
-  mediasSectionResizeObserver.observe(document.querySelector('main'));
+  mediasSectionResizeObserver.observe(document.querySelector('.medias__section'));
 
   /**
    * Function called on the click event on the media heart.
