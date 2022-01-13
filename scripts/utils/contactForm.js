@@ -36,12 +36,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // === Modal contact opening and closing ===
   // ==============================================
  
+  // ==================
+  // === OPEN MODAL ===
 
+  /**
+   * Open the modal set as argument and set focus on the first focusable element
+   * @param {HTMLElement} dialog Modal element to open
+   * @returns Return if the modal has no focusable elements
+   */
   const openModal = (dialog) => {
     // Select all the focusable elements of the modal
     const focusableElements = dialog.querySelectorAll(focusableElementsArray);
     const firstFocusableElement = focusableElements[0];
-    console.log(focusableElements[0])
     
      // Activate modal and disable main element when modal window opens
     dialog.setAttribute('aria-hidden', false);
@@ -59,23 +65,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 300);
   };
 
-  const closeModal = (dialog) => {
+  // ==================
+  // === CLOSE MODAL ===
+
+  /**
+   * Close the modal, remove error messages and restore the focus on opening trigger
+   * @param {HTMLElement} dialog Modal element to be close
+   * @param {HTMLElement} trigger Trigger on which to restore focus after closing
+   */
+  const closeModal = (dialog, trigger) => {
     dialog.setAttribute('aria-hidden', true);
     mainElement.setAttribute('aria-hidden', false);
-    
+
     // Removes the error messages
     formData.forEach(formD => {
       formD.setAttribute("data-error-visible", "false");
       formD.setAttribute("data-error", "");
     });
     error = "";
-  }
+
+    // Restore focus on the trigger that open the modal
+    trigger.focus();
+  };
 
   triggers.forEach((trigger) => {
     // Get the modal linked to the trigger via aria-controls attribute
     const dialog = document.getElementById(trigger.getAttribute('aria-controls'));
     
-    // Get all the triggers for closing the modal via dta attribute
+    // Get all the triggers for closing the modal via data attribute
     const closeTriggers = dialog.querySelectorAll('[data-close]');
 
     // Open the dialog modal via event 'click'
@@ -92,14 +109,14 @@ document.addEventListener('DOMContentLoaded', () => {
       
       //  Close by clic on the trigger
       closeTrigger.addEventListener('click', (event) => {
-        closeModal(dialogModalToClose);
+        closeModal(dialogModalToClose, trigger);
       });
     });
 
     // Close the modal by click on modal background
     window.addEventListener('click', (event) => {
       if(event.target === dialog) {
-        closeModal(dialog);
+        closeModal(dialog, trigger);
       }
     });
   });
