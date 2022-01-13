@@ -1,40 +1,41 @@
+:root {
+  --modal-duration: .2s;
+}
+
 /* ====================== */
 /* ===== CONTACT FORM ===== */
 /* ====================== */
 
-/* Modal wrapper - Viewport background when modal opened*/
-
-.contactModal__container {
-  display: none;
+.contactModal {
   position: fixed;
-  z-index: 9999;
+  z-index: 100;
   left: 0;
   top: 0;
   height: 100%;
   width: 100%;
   overflow: auto;
   background-color: var(--color-modal-bg);
+  -webkit-overflow-scrolling: touch;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  overflow-y: scroll;
 }
 
-.contactModal {
+.contactModal__box {
   margin: 5% auto;
   padding-block: 6px;
   width: 100%;
   max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
   background: var(--color-secondary);
   border-radius: 5px;
-  overflow: hidden;
-  -webkit-overflow-scrolling: touch;
   position: relative;
   color: var(--color-black);
 }
 
-/* .contactModal[aria-hidden='true'] {
+.contactModal[aria-hidden='true'] {
   visibility: hidden;
   opacity: 0;
-} */
+}
 
 @media screen and (max-width: 900px) {
   .contactModal {

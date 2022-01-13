@@ -31,16 +31,26 @@
       <header class="medias__header">
         <a href="index.html"><img src="assets/images/logo.png" alt="Fisheye Home page" class="logo" /></a>
       </header>
-      <main id="main">
+      <main class="main">
         <div class="photograph__header">
           <div class="photograph__header__infos"></div>
-          <button class="button contactButton" aria-haspopup="dialog" aria-controls="dialog">Contactez-moi</button>
+          <button
+            type="button"
+            class="button contactButton"
+            aria-haspopup="dialog"
+            aria-controls="dialog">
+              Contactez-moi
+          </button>
           <div class="photograph__header__portrait"></div>
         </div>
         <section class="photograph__medias">
           <div class="medias__sorting">
             <label id="orderBy">Trier par :
-              <select name="sorting__list" id="sorting__list" aria-labelledby="orderBy sorting__list">
+              <select
+                name="sorting__list"
+                id="sorting__list"
+                aria-labelledby="orderBy sorting__list"
+              >
                 <option value="popularity" selected>Popularité</option>
                 <option value="date">Date</option>
                 <option value="title">Titre</option>
@@ -56,13 +66,6 @@
               <div class="pricePerDay"></div>
             </div>
           </div>
-          <!-- <div class="medias__pageLikesPrice">
-            <div class="pageLikes">
-              <div class="totalLikes"></div>
-              <i class="heart-icon-filled fas fa-heart"></i>
-            </div>
-            <div class="pricePerDay"></div>
-          </div> -->
         </section>
       </main>
         <div class="contactModal__container">
@@ -75,86 +78,102 @@
           title="Fermer la fenêtre"
           tabindex="-1"
           aria-hidden="true">
-            <header class="contactModal__header">
-              <h1 class="contactModal__header__title" id="modalTitle1">Contactez-moi</h1>
-              <h2 id="modalTitle2">Mimi Keel</h2>
-              <div class="close" aria-label="Fermer"></div>
-            </header>
-            <div class="contactModal__body">
-              <form name="contact" method="get" data-form novalidate>
+            <div class="contactModal__box">
+              <header class="contactModal__header">
+                <h1 class="contactModal__header__title" id="modalTitle1">Contactez-moi</h1>
+                <h2 id="modalTitle2">Mimi Keel</h2>
                 <div
-                  class="formData"
-                  data-formData
-                  data-error
-                  data-error-visible="false"
+                  class="close"
+                  aria-label="Fermer"
+                  data-close="dialog"
+                  tabindex="0">
+                </div>
+              </header>
+              <div class="contactModal__body">
+                <form
+                  name="contact"
+                  method="get"
+                  data-form novalidate  
                 >
-                  <label for="first">Prénom</label>
+                  <div
+                    class="formData"
+                    data-formData
+                    data-error
+                    data-error-visible="false"
+                  >
+                    <label for="first">Prénom</label>
+                    <input
+                      class="text-control"
+                      type="text"
+                      id="first"
+                      name="first"
+                      data-minlength="2"
+                      data-required
+                      data-validate
+                    />
+                  </div>
+                  <div
+                    class="formData"
+                    data-formData
+                    data-error
+                    data-error-visible="false"
+                  >
+                    <label for="last">Nom</label>
+                    <input
+                      class="text-control"
+                      type="text"
+                      id="last"
+                      name="last"
+                      data-minlength="2"
+                      data-required
+                      data-validate
+                    />
+                  </div>
+                  <div
+                    class="formData"
+                    data-formData
+                    data-error
+                    data-error-visible="false"
+                  >
+                    <label for="email">Email</label>
+                    <input
+                      class="text-control"
+                      type="email"
+                      id="email"
+                      name="email"
+                      data-email
+                      data-required
+                      data-validate
+                    />
+                  </div>
+                  <div
+                    class="formData"
+                    data-formData
+                    data-error
+                    data-error-visible="false"
+                  >
+                    <label for="message">Votre message</label>
+                    <textarea
+                      class="text-control textarea"
+                      id="message"
+                      name="message"
+                      rows="10"
+                      data-minlength="20"
+                      data-maxlength="500"
+                      wrap="hard"
+                      data-message
+                      data-required
+                      data-validate
+                    ></textarea>
+                  </div>
                   <input
-                    class="text-control"
-                    type="text"
-                    id="first"
-                    name="first"
-                    data-minlength="2"
-                    data-required
-                    data-validate
+                    class="submitButton"
+                    type="submit"
+                    value="Envoyer"
+                    aria-label="Envoyer"
                   />
-                </div>
-                <div
-                  class="formData"
-                  data-formData
-                  data-error
-                  data-error-visible="false"
-                >
-                  <label for="last">Nom</label>
-                  <input
-                    class="text-control"
-                    type="text"
-                    id="last"
-                    name="last"
-                    data-minlength="2"
-                    data-required
-                    data-validate
-                  />
-                </div>
-                <div
-                  class="formData"
-                  data-formData
-                  data-error
-                  data-error-visible="false"
-                >
-                  <label for="email">Email</label>
-                  <input
-                    class="text-control"
-                    type="email"
-                    id="email"
-                    name="email"
-                    data-email
-                    data-required
-                    data-validate
-                  />
-                </div>
-                <div
-                  class="formData"
-                  data-formData
-                  data-error
-                  data-error-visible="false"
-                >
-                  <label for="message">Votre message</label>
-                  <textarea
-                    class="text-control textarea"
-                    id="message"
-                    name="message"
-                    rows="10"
-                    data-minlength="20"
-                    data-maxlength="500"
-                    wrap="hard"
-                    data-message
-                    data-required
-                    data-validate
-                  ></textarea>
-                </div>
-                <input class="submitButton" type="submit" value="Envoyer" aria-label="Envoyer"/>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
