@@ -68,116 +68,122 @@
           </div>
         </section>
       </main>
-        <div class="contactModal__container">
+      <div class="confirmModal">
+        <div class="confirmModal__box">
           <div
-          id="dialog"
-          class="contactModal"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="modalTitle1 modalTitle2"
-          title="Fermer la fenêtre"
-          tabindex="-1"
-          aria-hidden="true">
-            <div class="contactModal__box">
-              <header class="contactModal__header">
-                <h1 class="contactModal__header__title" id="modalTitle1">Contactez-moi</h1>
-                <h2 id="modalTitle2">Mimi Keel</h2>
-                <div
-                  class="close"
-                  aria-label="Fermer"
-                  data-close="dialog"
-                  tabindex="0">
-                </div>
-              </header>
-              <div class="contactModal__body">
-                <form
-                  name="contact"
-                  method="get"
-                  data-form novalidate  
-                >
-                  <div
-                    class="formData"
-                    data-formData
-                    data-error
-                    data-error-visible="false"
-                  >
-                    <label for="first">Prénom</label>
-                    <input
-                      class="text-control"
-                      type="text"
-                      id="first"
-                      name="first"
-                      data-minlength="2"
-                      data-required
-                      data-validate
-                    />
-                  </div>
-                  <div
-                    class="formData"
-                    data-formData
-                    data-error
-                    data-error-visible="false"
-                  >
-                    <label for="last">Nom</label>
-                    <input
-                      class="text-control"
-                      type="text"
-                      id="last"
-                      name="last"
-                      data-minlength="2"
-                      data-required
-                      data-validate
-                    />
-                  </div>
-                  <div
-                    class="formData"
-                    data-formData
-                    data-error
-                    data-error-visible="false"
-                  >
-                    <label for="email">Email</label>
-                    <input
-                      class="text-control"
-                      type="email"
-                      id="email"
-                      name="email"
-                      data-email
-                      data-required
-                      data-validate
-                    />
-                  </div>
-                  <div
-                    class="formData"
-                    data-formData
-                    data-error
-                    data-error-visible="false"
-                  >
-                    <label for="message">Votre message</label>
-                    <textarea
-                      class="text-control textarea"
-                      id="message"
-                      name="message"
-                      rows="10"
-                      data-minlength="20"
-                      data-maxlength="500"
-                      wrap="hard"
-                      data-message
-                      data-required
-                      data-validate
-                    ></textarea>
-                  </div>
-                  <input
-                    class="submitButton"
-                    type="submit"
-                    value="Envoyer"
-                    aria-label="Envoyer"
-                  />
-                </form>
-              </div>
-            </div>
+            class="closeConfirmModal"
+            aria-label="Fermer"
+            tabindex="0">
           </div>
         </div>
-      
+      </div>
+      <div
+      id="dialog"
+      class="contactModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle1 modalTitle2"
+      title="Fermer la fenêtre"
+      tabindex="-1"
+      aria-hidden="true">
+        <div class="contactModal__box">
+          <header class="contactModal__header">
+            <h1 class="contactModal__header__title" id="modalTitle1">Contactez-moi</h1>
+            <h2 id="modalTitle2">Mimi Keel</h2>
+            <div
+              class="close"
+              aria-label="Fermer"
+              data-close="dialog"
+              tabindex="0">
+            </div>
+          </header>
+          <div class="contactModal__body">
+            <form
+              name="contact"
+              method="get"
+              data-form novalidate  
+            >
+              <div
+                class="formData"
+                data-formData
+                data-error
+                data-error-visible="false"
+              >
+                <label for="first">Prénom</label>
+                <input
+                  class="text-control"
+                  type="text"
+                  id="first"
+                  name="first"
+                  data-minlength="2"
+                  data-required
+                  data-validate
+                />
+              </div>
+              <div
+                class="formData"
+                data-formData
+                data-error
+                data-error-visible="false"
+              >
+                <label for="last">Nom</label>
+                <input
+                  class="text-control"
+                  type="text"
+                  id="last"
+                  name="last"
+                  data-minlength="2"
+                  data-required
+                  data-validate
+                />
+              </div>
+              <div
+                class="formData"
+                data-formData
+                data-error
+                data-error-visible="false"
+              >
+                <label for="email">Email</label>
+                <input
+                  class="text-control"
+                  type="email"
+                  id="email"
+                  name="email"
+                  data-email
+                  data-required
+                  data-validate
+                />
+              </div>
+              <div
+                class="formData"
+                data-formData
+                data-error
+                data-error-visible="false"
+              >
+                <label for="message">Votre message</label>
+                <textarea
+                  class="text-control textarea"
+                  id="message"
+                  name="message"
+                  rows="10"
+                  data-minlength="20"
+                  data-maxlength="500"
+                  wrap="hard"
+                  data-message
+                  data-required
+                  data-validate
+                ></textarea>
+              </div>
+              <input
+                class="submitButton"
+                type="submit"
+                value="Envoyer"
+                aria-label="Envoyer"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
       <script src="scripts/utils/contactForm.js"></script>
       <script src="scripts/utils/custom-player.js"></script>

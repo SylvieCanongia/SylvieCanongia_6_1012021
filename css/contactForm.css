@@ -189,6 +189,48 @@ input {
 }
 
 /* Confirmation popin */
+.confirmModal {
+  display: none;
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: var(--color-modal-bg);
+  -webkit-overflow-scrolling: touch;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  overflow-y: scroll;
+}
+
+.confirmModal__box {
+  margin: 5% auto;
+  padding-block: 6px;
+  width: 100%;
+  height: 600px;
+  max-width: 500px;
+  background: var(--color-secondary);
+  border-radius: 5px;
+  position: relative;
+  color: var(--color-black);
+}
+
+.confirmModal__body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+.confirmModal__body p {
+  font-size: 2rem;
+  margin-block-start: 48px;
+}
 
 .btn-close-modal {
   background: var(--color-primary);

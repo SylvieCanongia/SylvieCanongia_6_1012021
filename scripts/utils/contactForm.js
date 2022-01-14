@@ -1,14 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => { 
 
   // DOM Elements
-  const modalbg = document.querySelector(".contactModal__container");
+  // const modalbg = document.querySelector(".confirmModal");
   
   const formData = document.querySelectorAll(".formData");
-  const closeModalCrossElement = document.querySelector(".close");
+  const closeConfirmModalCrossElement = document.querySelector(".closeConfirmModal");
   // get the form element
   const forms = document.querySelectorAll("form[data-form]");
   const formElement = document.querySelector("form[data-form]");
-  const modalBodyElement = document.querySelector(".contactModal__body");
+  const modalConfirmContainer = document.querySelector(".confirmModal");
+  const modalConfirmElement = document.querySelector(".confirmModal__box");
 
   // Managing of the errors
   let error;
@@ -120,13 +121,17 @@ document.addEventListener('DOMContentLoaded', () => {
     trigger.focus();
   };
 
+  // ======================================================
+  // === Gets the modal and triggers to manage actions  ===
+  // ======================================================
+
   triggers.forEach((trigger) => {
     // Get the modal linked to the trigger via aria-controls attribute
     const dialog = document.getElementById(trigger.getAttribute('aria-controls'));
     
     // Get all the triggers for closing the modal via data attribute
     const closeTriggers = dialog.querySelectorAll('[data-close]');
-
+    console.log(closeTriggers)
     // Open the dialog modal via event 'click' on button
     trigger.addEventListener("click", (event) => {
       event.preventDefault();
@@ -250,10 +255,10 @@ document.addEventListener('DOMContentLoaded', () => {
       formDataElement.setAttribute("data-error-visible", "false");
       error = "";
       formDataElement.setAttribute("data-error", "");
+
     } else {
       formDataElement.setAttribute("data-error-visible", "true");
     }
-
     return error;
   }
 
@@ -282,6 +287,13 @@ document.addEventListener('DOMContentLoaded', () => {
       logDatas();
       // reset the form
       formElement.reset();
+      function close() {
+        const modalToClose = document.querySelector('.contactModal');
+        const triggerToFocus = document.querySelector('.contactButton');
+        console.log(modalToClose, triggerToFocus);
+        closeModal(modalToClose, triggerToFocus);
+      }
+      close();
       confirmSubmission();
     }
   }
@@ -294,13 +306,13 @@ document.addEventListener('DOMContentLoaded', () => {
    * Opens a popin to confirm the form submission to the user
    */
   function confirmSubmission() {
-    // hide the form content
-    formElement.style.display = "none";
+    // open the modal of confirmation
+    modalConfirmContainer.style.display = "block";
 
     // Display a message after form validation success
     // 1. Create a div element
     const divElement = document.createElement("div");
-    divElement.className = "modal-confirm";
+    divElement.className = "confirmModal__body";
 
     // 2. Put a p element into the div element
     const pElement = document.createElement("p");
@@ -317,9 +329,9 @@ document.addEventListener('DOMContentLoaded', () => {
     divElement.appendChild(buttonElement);
 
     // Put the div element into the modal body
-    modalBodyElement.appendChild(divElement);
+    modalConfirmElement.appendChild(divElement);
 
-    closeModalCrossElement.addEventListener("click", closeConfirmModal);
+    closeConfirmModalCrossElement.addEventListener("click", closeConfirmModal);
 
     const btnCloseModalElement = document.querySelector(".btn-close-modal");
     btnCloseModalElement.addEventListener("click", closeConfirmModal);
@@ -334,13 +346,16 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   function closeConfirmModal() {
     // Select and remove the p Element
-    modalBodyElement.querySelector("p").remove();
+    modalConfirmElement.querySelector("p").remove();
     // Select and remove the button Element
-    modalBodyElement.querySelector(".btn-close-modal").remove();
+    modalConfirmElement.querySelector(".btn-close-modal").remove();
     // Select and remove the div Element
-    modalBodyElement.querySelector(".modal-confirm").remove();
+    modalConfirmElement.querySelector(".confirmModal__body").remove();
     // close the modal
-    modalbg.style.display = "none";
+    modalConfirmContainer.style.display = "none";
+
+    // hide the form content
+    // formElement.style.display = "block";
   }
 
   // ========================================
