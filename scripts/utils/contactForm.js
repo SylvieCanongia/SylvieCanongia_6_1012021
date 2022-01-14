@@ -34,7 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const keyValues = {
     enter: 'Enter',
-    escape: 'Escape'
+    escape: 'Escape',
+    tab: 'Tab'
   };
 
   // ==============================================
@@ -50,9 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
    * @returns Return if the modal has no focusable elements
    */
   const openModal = (dialog) => {
-    // Select all the focusable elements of the modal
+    // Select all the focusable elements of the modal, the first and the last
     const focusableElements = dialog.querySelectorAll(focusableElementsArray);
     const firstFocusableElement = focusableElements[0];
+    const lastFocusableElement = focusableElements[focusableElements.length - 1];
     
      // Activate modal and disable main element when modal window opens
     dialog.setAttribute('aria-hidden', false);
@@ -67,6 +69,31 @@ document.addEventListener('DOMContentLoaded', () => {
     // to focus after the open modal animation
     window.setTimeout(() => {
       firstFocusableElement.focus();
+
+      // keep the focus inside the dialog
+      focusableElements.forEach((focusableElement) => {
+        if(focusableElement.addEventListener) {
+          console.log(focusableElement)
+          focusableElement.addEventListener('keydown', (event) => {
+            const tab = event.key === keyValues.tab;
+
+            if(!tab) {
+              return;
+            }
+
+            // Then if tab is pressed :
+            if(event.shiftKey) {
+              if(event.target === firstFocusableElement) {
+                event.preventDefault();
+                lastFocusableElement.focus();
+              }
+            } else if (event.target === lastFocusableElement) {
+                event.preventDefault();
+                firstFocusableElement.focus();
+            }
+          });
+        }
+      });
     }, 100);
   };
 
