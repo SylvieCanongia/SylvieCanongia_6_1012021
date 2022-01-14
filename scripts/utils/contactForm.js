@@ -187,12 +187,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-
   // ======================
   // === VALIDATE INPUT ===
   // ======================
 
-  // Validate input
+  /**
+   * 
+   * @param {HTMLElement} input Input element of the form for validation
+   * @returns If there are errors, displays a message under the concerned fields,
+   * else return no error
+   */
   function validateInput(input) {
     // get the value and formData element for assigning error message
     // (via CSS pseudo-elements)
@@ -229,7 +233,11 @@ document.addEventListener('DOMContentLoaded', () => {
       error = formDataElement.dataset.error;
     }
 
-    // Validate email using a regex
+    /**
+     * 
+     * @param {String} String Email adress
+     * @returns Boolean. True if the email matches the regex, else false
+     */
     function validateEmail(email) {
       const regexMail =
         /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -253,9 +261,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // ======== SUBMITFORM ========
   // ============================
 
-  // submit form on submit button click
-  // all inputs are passed as argument with bind to loop through inputs
-  // and call validateInput on each input element
+  /**
+   * Submits the form on click on the submit button and calls validateInput() on each input element
+   * @param {NodeList} inputs List of all the inputs of the form by id/class (ex: input#first.text-control)
+   * @param {MouseEvent} event
+   */
   function submitForm(inputs, event) {
     event.preventDefault();
     errors = [];
@@ -280,6 +290,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // === CONFIRM SUBMISSION ===
   // ==========================
 
+  /**
+   * Opens a popin to confirm the form submission to the user
+   */
   function confirmSubmission() {
     // hide the form content
     formElement.style.display = "none";
@@ -291,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Put a p element into the div element
     const pElement = document.createElement("p");
-    pElement.textContent = "Merci pour votre message. Je vous répondrai dans les meilleurs délais.";
+    pElement.textContent = "Merci pour votre message. Nous vous répondrons dans les meilleurs délais.";
 
     divElement.appendChild(pElement);
 
@@ -316,6 +329,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // === Modal confirmation closing ===
   // ==================================
 
+  /**
+   * Closes the confirmation popin
+   */
   function closeConfirmModal() {
     // Select and remove the p Element
     modalBodyElement.querySelector("p").remove();
@@ -328,10 +344,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ========================================
-  // === Get the form datas ===
-  // === and display them in the console ====
+  // === Function that gets the form datas ==
+  // === and displays them in the console ===
   // ========================================
 
+  /**
+   * Retrieves the data entered in the fields after validation
+   * and displays it in the console
+   */
   function logDatas() {
     const datas = document.querySelectorAll('[data-validate]');
     datas.forEach(data => {
