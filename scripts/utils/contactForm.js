@@ -32,6 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
     '[tabindex]:not([tabindex="-1"])',
   ];
 
+  const keyValues = {
+    enter: 'Enter',
+    escape: 'Escape'
+  };
+
   // ==============================================
   // === Modal contact opening and closing ===
   // ==============================================
@@ -62,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // to focus after the open modal animation
     window.setTimeout(() => {
       firstFocusableElement.focus();
-    }, 300);
+    }, 100);
   };
 
   // ==================
@@ -95,10 +100,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Get all the triggers for closing the modal via data attribute
     const closeTriggers = dialog.querySelectorAll('[data-close]');
 
-    // Open the dialog modal via event 'click'
+    // Open the dialog modal via event 'click' on button
     trigger.addEventListener("click", (event) => {
       event.preventDefault();
       openModal(dialog);
+    });
+
+    // Open the dialog modal on pressing 'Enter' key
+    trigger.addEventListener('keydown', (event) => {
+      if(event.key === keyValues.enter) {
+        event.preventDefault();
+        openModal(dialog);
+      }
     });
 
     // CLOSE THE DIALOG MODAL
@@ -107,10 +120,19 @@ document.addEventListener('DOMContentLoaded', () => {
       // Get the modal matching with the trigger via the id
       const dialogModalToClose = document.getElementById(closeTrigger.dataset.close);
       
-      //  Close by clic on the trigger
+      //  Close by click on the trigger
       closeTrigger.addEventListener('click', (event) => {
         closeModal(dialogModalToClose, trigger);
       });
+    });
+
+    // Close the dialog modal on pressing 'Escape' key
+    dialog.addEventListener('keydown', (event) => {
+      if(event.key === keyValues.escape) {
+        event.preventDefault();
+        console.log('escape')
+        closeModal(dialog, trigger);
+      }
     });
 
     // Close the modal by click on modal background
