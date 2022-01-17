@@ -58,7 +58,7 @@ function mediaCard(media, name) {
 
     // span into the heading with heart icon
     createElement('span', {role: 'img', ariaLabel: "likes", className: "media__likes"}, likes, 'div.media__likes__wrapper');
-    createElement('i', {className: 'heart-icon-filled fas fa-heart media__heart'}, undefined, 'div.media__likes__wrapper');
+    createElement('i', {className: 'heart-icon-filled fas fa-heart media__heart', tabIndex: '0'}, undefined, 'div.media__likes__wrapper');
     
     return (article);
   }

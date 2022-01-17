@@ -12,6 +12,17 @@ function manageLikes() {
   const pageLikesElement = document.querySelector('.totalLikes');
 
   /**
+   * @param {KeyboardEvent} event
+   * 
+   */
+   function onKeyUp(event) {
+    if (event.key === 'Enter') {
+      incrementMediaLikes(event);
+      managePageLikes();
+    }
+  }
+
+  /**
    * 
    * @param {MouseEvent} event 
    * @returns The number of likes of the media, incremented by one.
@@ -61,6 +72,7 @@ function manageLikes() {
     mediaHeartsElements.forEach((mediaHeart) => {
       mediaHeart.addEventListener('click', incrementMediaLikes);
       mediaHeart.addEventListener('click', managePageLikes);
+      mediaHeart.addEventListener('keyup', onKeyUp);
     });
   }
   return { manageMediaLikes }

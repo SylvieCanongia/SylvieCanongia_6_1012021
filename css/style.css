@@ -72,7 +72,19 @@ body {
 
 a {
     cursor: pointer;
+    border-radius: 5px;
 }
+
+@supports selector(div:focus-visible) {
+    /* only on clic/tap focus */
+    a:focus:not(:focus-visible) {
+      outline: 0;
+    }
+    /* only on keyboard focus */
+    a:focus-visible {
+      outline: 2px dashed orange;
+    }
+  }
 
 header,  main {
     max-width: 1300px;
@@ -89,6 +101,7 @@ header,  main {
 
 .logo {
     height: 50px;
+    /* border-radius: 5px; */
 }
 
 .home__header .logo {
