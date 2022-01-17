@@ -6,8 +6,10 @@ function sorting(event, mediasArray) {
 
   if (event.currentTarget.value === "popularity") {
     mediasArray.sort(function (a, b) {
-        return b.likes - a.likes;
+      
+        return (a.likes - b.likes);
       });
+      mediasArray.reverse();
   }
 
   if (event.currentTarget.value === "date") {

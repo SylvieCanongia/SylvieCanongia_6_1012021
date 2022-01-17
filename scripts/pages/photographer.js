@@ -64,6 +64,8 @@ async function displayMediaData(medias, photographers) {
   medias.sort(function (a, b) {
     return a.likes - b.likes;
   });
+
+  medias.reverse();
   
   // Create the media cards sorted by popularity and display them on the page
   medias.forEach((media) => {
