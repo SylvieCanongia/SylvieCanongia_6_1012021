@@ -4,18 +4,9 @@
  */
 function sorting(event, mediasArray) {
 
-  // sorting by heading via select
-  // const headingsElements = Array.from(document.querySelectorAll('.media__CardHeading__h2'));
-  // let headings = [];
-
-  // headingsElements.forEach(heading => {
-  // console.log(heading.textContent);
-  // let sortedHeadings = headings.push(heading.textContent);
-  // console.log(sortedHeadings);
-  // });
   if (event.currentTarget.value === "popularity") {
     mediasArray.sort(function (a, b) {
-        return a.likes - b.likes;
+        return b.likes - a.likes;
       });
   }
 

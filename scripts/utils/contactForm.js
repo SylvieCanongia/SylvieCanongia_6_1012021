@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Get all the triggers for closing the modal via data attribute
     const closeTriggers = dialog.querySelectorAll('[data-close]');
-    console.log(closeTriggers)
+    
     // Open the dialog modal via event 'click' on button
     trigger.addEventListener("click", (event) => {
       event.preventDefault();
