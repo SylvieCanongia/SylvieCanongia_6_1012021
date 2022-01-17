@@ -1,6 +1,6 @@
 import { createElement, getExtension } from './../utils/functions.js';
 
-function ImageTag(imgTag, imgName, url) {
+function ImageTag(imgTag, imgName, altText, url) {
 
   let ext = getExtension(imgName);
   
@@ -10,7 +10,7 @@ function ImageTag(imgTag, imgName, url) {
       'classIdAttr': {
         'className': "media__cardImg",
         'src': url,
-        'alt': ''
+        'alt': `${altText}, vue rapprochée de l'image`
       },
       'textContent': undefined,
       'appendTo': "div.media__card__wrapper"

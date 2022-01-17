@@ -4,6 +4,7 @@ import { createElement } from './../utils/functions.js';
 
 function mediaCard(media, name) {
   const { id, photographerId, title, image, video, likes, date, price } = media;
+  const altText = media['alt-text'];
 
   // Get the firstname of the photographer from the complete name
   const firstname = name.split(" ");
@@ -23,20 +24,20 @@ function mediaCard(media, name) {
 
     // link wrapper of the img or the video
     if(media.image){
-      createElement('a', {className: 'media__card__img__wrapper', href: picture, ariaLabel: `Vue rapprochée de l'image`}, undefined, 'div.media__card__wrapper');
+      createElement('a', {className: 'media__card__img__wrapper', href: picture}, undefined, 'div.media__card__wrapper');
     }
 
     if(media.video) {
-    createElement('a', {className: 'media__card__img__wrapper', href: film, ariaLabel: `Vue rapprochée de la vidéo`}, undefined, 'div.media__card__wrapper');
+    createElement('a', {className: 'media__card__img__wrapper', href: film}, undefined, 'div.media__card__wrapper');
     }
 
     // Create img or video element in function of the type of the element
     if(media.image){
-      photographerMediaFactory("image", media.image, picture);
+      photographerMediaFactory("image", media.image, altText, picture);
     }
     
     if(media.video) {
-      photographerMediaFactory("video", media.video, film);
+      photographerMediaFactory("video", media.video, altText, film);
       const videoElement = document.querySelectorAll('.video');
       const playButton = document.querySelectorAll('.playPauseButton');
       

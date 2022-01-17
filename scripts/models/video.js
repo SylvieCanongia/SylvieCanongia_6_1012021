@@ -29,7 +29,7 @@ const addVideoControls = () => {
   return { controls };
 }
 
-function VideoTag(tag, videoName, url) {
+function VideoTag(tag, videoName, altText, url) {
 
   let ext = getExtension(videoName);
 
@@ -39,6 +39,7 @@ function VideoTag(tag, videoName, url) {
       'classIdAttr': {
         'className': "media__cardImg photographer-video",
         'src': url,
+        'title': `${altText}, vue rapprochée de la vidéo`,
         'controls': 'controls'
       },
       'textContent': undefined,
