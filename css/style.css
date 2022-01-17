@@ -77,12 +77,21 @@ a {
 
 @supports selector(div:focus-visible) {
     /* only on clic/tap focus */
-    a:focus:not(:focus-visible) {
+    a:focus:not(:focus-visible),
+    button:focus:not(:focus-visible),
+    select:focus:not(:focus-visible),
+    i:focus:not(:focus-visible) {
       outline: 0;
     }
     /* only on keyboard focus */
     a:focus-visible {
       outline: 2px dashed orange;
+    }
+
+    button:focus-visible,
+    select:focus-visible,
+    i:focus-visible {
+        outline: 2px solid orange;
     }
   }
 
@@ -104,7 +113,7 @@ header,  main {
     /* border-radius: 5px; */
 }
 
-.home__header .logo {
+.home__header a {
     margin-left: 130px;
 }
 
