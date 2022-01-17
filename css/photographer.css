@@ -286,6 +286,13 @@ option:hover {
     z-index: 5;
 }
 
+/* Keep the total of the page likes on the border right of the medias */
+@media screen and (max-width: 1420px) {
+    .media__pageLikes__box {
+    right: 120px;
+    }
+}
+
 .pageLikes {
     display: flex;
     justify-content: space-between;

@@ -59,8 +59,15 @@ body {
   font-family: var(--font-default);
 }
 
-.page__wrapper {
-    margin-inline: var(--margin-gap);
+body {
+    max-width: 1300px;
+    margin: auto;
+}
+
+@media screen and (max-width: 1420px ) {
+    .page__wrapper {
+        padding-inline: var(--margin-gap);
+    }
 }
 
 a {
