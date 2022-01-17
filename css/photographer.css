@@ -197,6 +197,8 @@ option:hover {
 
 .medias__section {
     position: relative;
+    
+    
     display: grid;
     /* grid-template-columns: 1fr 1fr 1fr; */
     /* fluid grid : min-width = 280px or 100% / max-width = 1fr */
@@ -261,18 +263,27 @@ option:hover {
 
 /* Likes counter on the bottom of the page */
 
-.medias__pageLikesPrice {
+/* Fixed wrapper that allows to position the box inside on the border right of the medias */
+.medias__pageLikes {
     position: fixed;
-   /* See position top and right positions in likes.js almost line 46*/
-   height: 46px;
-   width: 16rem;
-   background: var(--color-secondary);
-   border-radius: 3px;
-   font-size: 1.4rem;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   z-index: 15;
+    top: calc(100vh - 42px);
+    max-width: 1300px;
+    width: 100%;
+    margin: auto;
+}
+
+.media__pageLikes__box {
+    position: absolute;
+    right: 0;
+    height: 46px;
+    width: 16rem;
+    background: var(--color-secondary);
+    border-radius: 3px;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
 }
 
 .pageLikes {

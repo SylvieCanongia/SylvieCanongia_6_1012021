@@ -9,7 +9,7 @@ function manageLikes() {
   const mediaHeartsElements = document.querySelectorAll('.media__heart');
 
   // Total likes element on the bottom of the page
-  const pageLikesElement = document.querySelector('.medias__pageLikesPrice .totalLikes');
+  const pageLikesElement = document.querySelector('.totalLikes');
 
   /**
    * 
@@ -42,26 +42,6 @@ function manageLikes() {
 
   // Display the sum of the likes on the bottom of the page
   pageLikesElement.textContent = sumOfAllMediasLikes();
-  
-  const likesCounter = document.querySelector('.medias__pageLikesPrice');
-  const likesCounterContainer = document.querySelector('.medias__section');
-  likesCounter.style.top = window.innerHeight - 42 +"px";
-  // window.onresize = function() {
-  //   likesCounter.style.right = (window.innerWidth - likesCounterContainer.offsetWidth) / 2 + "px";
-  // }
- 
-  let mediasSectionResizeObserver = new ResizeObserver(entries => {
-    for (let entry of entries) {
-      // console.log(entry);
-      // const element = entry.target;
-      const elementRectDimensions = entry.contentRect;
-      likesCounter.style.right = ((window.innerWidth - elementRectDimensions.width) / 2) + "px";
-      console.log((window.innerWidth - elementRectDimensions.width) / 2 + "px")
-    }
-  });
-  
-  // Observe one or multiple elements
-  mediasSectionResizeObserver.observe(document.querySelector('.medias__section'));
 
   /**
    * Function called on the click event on the media heart.
