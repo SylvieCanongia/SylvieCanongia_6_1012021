@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
@@ -19,8 +19,8 @@
     ></script>
 
     <!-- Styles -->
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/custom-player.css" rel="stylesheet" type="text/css" />
     <link href="css/lightbox.css" rel="stylesheet" type="text/css" />
@@ -29,7 +29,7 @@
   <body>
     <div class="page__wrapper">
       <header class="medias__header">
-        <a href="index.html"><img src="assets/images/logo.png" alt="Fisheye Home page" class="logo" /></a>
+        <a href="index.html"><img src="assets/images/logo.png" alt="Fisheye Page d'accueil" class="logo" /></a>
       </header>
       <main class="main">
         <div class="photograph__header">
@@ -43,7 +43,7 @@
           </button>
           <div class="photograph__header__portrait"></div>
         </div>
-        <section class="photograph__medias">
+        <div class="photograph__medias">
           <div class="medias__sorting">
             <label id="orderBy">Trier par :
               <select
@@ -68,15 +68,17 @@
               <div class="pricePerDay"></div>
             </div>
           </div>
-        </section>
+        </div>
       </main>
       <div class="confirmModal">
         <div class="confirmModal__box">
-          <div
+          <button
+            type="button"
             class="closeConfirmModal"
+            
             aria-label="Fermer"
             tabindex="0">
-          </div>
+          </button>
         </div>
       </div>
       <div
@@ -92,12 +94,13 @@
           <header class="contactModal__header">
             <h1 class="contactModal__header__title" id="modalTitle1">Contactez-moi</h1>
             <h2 id="modalTitle2">Mimi Keel</h2>
-            <div
+            <button
+              type="button"
               class="close"
               aria-label="Fermer"
               data-close="dialog"
               tabindex="0">
-            </div>
+          </button>
           </header>
           <div class="contactModal__body">
             <form
@@ -168,6 +171,7 @@
                   id="message"
                   name="message"
                   rows="10"
+                  cols="50"
                   data-minlength="20"
                   data-maxlength="500"
                   wrap="hard"

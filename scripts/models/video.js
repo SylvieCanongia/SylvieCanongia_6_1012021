@@ -2,7 +2,7 @@ import { createElement, getExtension } from './../utils/functions.js';
 
 const addVideoControls = () => {
   let controls = createElement('div', {className: "photographer-controls"}, undefined, 'article .media__card__wrapper');
-  let playPauseButton = createElement('button', {className: "photographer-playPauseButton"}, undefined, 'div.photographer-controls');
+  let playPauseButton = createElement('button', {className: "photographer-playPauseButton", ariaLabel: "Lecture ou pause"}, undefined, 'div.photographer-controls');
   playPauseButton.setAttribute('data-icon', 'P');
   // let iconPlay = createElement('i', {className: 'fas fa-play'}, undefined, '.playPauseButton');
   
@@ -12,7 +12,7 @@ const addVideoControls = () => {
   // let pauseButton = createElement('div', {className: "pauseButton"}, undefined, 'div.controls');
   // let iconPause = createElement('i', {className: 'fas fa-pause'}, undefined, '.pauseButton');
 
-  let stopButton = createElement('button', {className: "photographer-stopButton"}, undefined, 'div.photographer-controls');
+  let stopButton = createElement('button', {className: "photographer-stopButton", ariaLabel: "Stop"}, undefined, 'div.photographer-controls');
   stopButton.setAttribute('data-icon', 'S');
   // let iconStop = createElement('i', {className: 'fas fa-stop'}, undefined, '.stopButton');
   
@@ -39,7 +39,7 @@ function VideoTag(tag, videoName, altText, url) {
       'classIdAttr': {
         'className': "media__cardImg photographer-video",
         'src': url,
-        'title': `${altText}, vue rapprochée de la vidéo`,
+        'ariaLabel': `${altText}, vue rapprochée de la vidéo`,
         'controls': 'controls'
       },
       'textContent': undefined,

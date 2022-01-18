@@ -141,7 +141,9 @@ input {
 
 /* ==== Cross to close the modal ==== */
 
-.close {
+.close, .closeConfirmModal {
+  background-color: transparent;
+  border: none;
   position: absolute;
   right: 6%;
   top: 12px;
@@ -150,11 +152,15 @@ input {
   opacity: 1;
   cursor: pointer;
   transform: scale(1.2);
+  
 }
 
 .close:before,
-.close:after {
+.close:after,
+.closeConfirmModal:before,
+.closeConfirmModal:after {
   position: absolute;
+  top: 0;
   left: 15px;
   content: " ";
   height: 32px;
@@ -162,11 +168,13 @@ input {
   background-color: var(--color-white);
 }
 
-.close:before {
+.close:before,
+.closeConfirmModal:before {
   transform: rotate(45deg);
 }
 
-.close:after {
+.close:after,
+.closeConfirmModal:after {
   transform: rotate(-45deg);
 }
 

@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
       // keep the focus inside the dialog
       focusableElements.forEach((focusableElement) => {
         if(focusableElement.addEventListener) {
-          console.log(focusableElement)
           focusableElement.addEventListener('keydown', (event) => {
             const tab = event.key === keyValues.tab;
 
@@ -156,13 +155,18 @@ document.addEventListener('DOMContentLoaded', () => {
       closeTrigger.addEventListener('click', (event) => {
         closeModal(dialogModalToClose, trigger);
       });
+
+      closeTrigger.addEventListener('keydown', (event) => {
+        if(event.key === keyValues.enter) {
+          event.preventDefault();
+          closeModal(dialogModalToClose, trigger);
+        }});
     });
 
     // Close the dialog modal on pressing 'Escape' key
     dialog.addEventListener('keydown', (event) => {
       if(event.key === keyValues.escape) {
         event.preventDefault();
-        console.log('escape')
         closeModal(dialog, trigger);
       }
     });
@@ -290,7 +294,6 @@ document.addEventListener('DOMContentLoaded', () => {
       function close() {
         const modalToClose = document.querySelector('.contactModal');
         const triggerToFocus = document.querySelector('.contactButton');
-        console.log(modalToClose, triggerToFocus);
         closeModal(modalToClose, triggerToFocus);
       }
       close();
