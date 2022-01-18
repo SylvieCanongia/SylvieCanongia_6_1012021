@@ -341,12 +341,14 @@ document.addEventListener('DOMContentLoaded', () => {
     btnCloseModalElement.addEventListener("click", closeConfirmModal);
     btnCloseModalElement.addEventListener('keydown', (event) => {
       if(event.key === keyValues.enter) {
+        event.preventDefault();
         closeConfirmModal();
       }
     });
 
     modalConfirmElement.addEventListener('keydown', (event) => {
       if(event.key === keyValues.escape) {
+        event.preventDefault();
         closeConfirmModal();
       }
     });
