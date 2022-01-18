@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // CLOSE THE DIALOG MODAL
+    // ACTIONS TO CLOSE THE DIALOG MODAL
 
     closeTriggers.forEach((closeTrigger) => {
       // Get the modal matching with the trigger via the id
@@ -337,7 +337,19 @@ document.addEventListener('DOMContentLoaded', () => {
     closeConfirmModalCrossElement.addEventListener("click", closeConfirmModal);
 
     const btnCloseModalElement = document.querySelector(".btn-close-modal");
+    btnCloseModalElement.focus();
     btnCloseModalElement.addEventListener("click", closeConfirmModal);
+    btnCloseModalElement.addEventListener('keydown', (event) => {
+      if(event.key === keyValues.enter) {
+        closeConfirmModal();
+      }
+    });
+
+    modalConfirmElement.addEventListener('keydown', (event) => {
+      if(event.key === keyValues.escape) {
+        closeConfirmModal();
+      }
+    });
   }
 
   // ==================================
@@ -356,6 +368,9 @@ document.addEventListener('DOMContentLoaded', () => {
     modalConfirmElement.querySelector(".confirmModal__body").remove();
     // close the modal
     modalConfirmContainer.style.display = "none";
+    const triggerToFocus = document.querySelector('.contactButton');
+    console.log(triggerToFocus);
+    triggerToFocus.focus();
 
     // hide the form content
     // formElement.style.display = "block";
