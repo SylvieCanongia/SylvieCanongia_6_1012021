@@ -59,7 +59,8 @@ function mediaCard(media, name) {
 
     // span into the heading with heart icon
     createElement('span', {className: "media__likes"}, likes, 'div.media__likes__wrapper');
-    createElement('i', {className: 'heart-icon-filled fas fa-heart media__heart',role: 'img', ariaLabel: "likes", ariaHidden: false, tabIndex: '0'}, undefined, 'div.media__likes__wrapper');
+    createElement('i', {className: 'heart-icon-filled fas fa-heart media__heart',role: 'img', ariaLabel: "likes", ariaHidden: false, tabIndex: '0', title: 'Cliquez le coeur pour aimer'}, undefined, 'div.media__likes__wrapper');
+    createElement('span', {className: "likesAccessibleText"},'Cliquez le coeur pour aimer', 'div.media__likes__wrapper');
     
     return (article);
   }

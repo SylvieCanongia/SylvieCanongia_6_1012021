@@ -17,9 +17,14 @@ function lightboxModal(medias) {
 
   // Launch the function get Lightbox that creates the lightbox template
   links.forEach(link => link.addEventListener('click', getLightbox));
+  // links.forEach(link => link.addEventListener('keyup', (event) => {
+  //   if( event.key === 'Enter') {
+  //     getLightbox;
+  //   }}));
+
 
   /**
-   * Get the template of the lightbox
+   * Get the template of the lightbox without the media inside
    * @param {Event} event 
    */
   function getLightbox(event) {
@@ -31,6 +36,10 @@ function lightboxModal(medias) {
 
   // Launch the function loadImage to display loader and then image
   links.forEach(link => link.addEventListener('click', targetImage));
+  // links.forEach(link => link.addEventListener('keyup', (event) => {
+  //   if( event.key === 'Enter') {
+  //     targetImage;
+  //   }}));
 
   /**
    * 
@@ -53,6 +62,7 @@ function lightboxModal(medias) {
     container.innerHTML = "";
   
     const lightbox__wrapper = document.querySelector('.lightbox__wrapper');
+    const closingCross = document.querySelector('.lightbox__close');
 
     //  Create img or video element in function of the type of the element (based on file url extension)
     let ext = getExtension(url);
@@ -63,6 +73,7 @@ function lightboxModal(medias) {
     // let name = urlSearchParams.get('name');
 
     getImage(heading, url);
+   
 
     function getImage(heading, url) {
       if(ext == "jpg"){
@@ -102,7 +113,12 @@ function lightboxModal(medias) {
       }
     }
 
+    // On the opening, focus on the cross that close the lightbox
+    closingCross.focus();
+
     // CLOSE THE LIGHTBOX BY CLICK ON THE CROSS OR PRESS ESC KEY
+
+    
 
     /**
    * Close the lightbox
@@ -112,7 +128,21 @@ function lightboxModal(medias) {
     function close(event) {
       event.preventDefault();
       lightbox__wrapper.remove();
-      document.removeEventListener('keyup', onKeyUp);
+      
+
+      function mediaToFocusOnClosing(event) {
+        // Get the src attribute of the current media on the lightbox to focus on closing
+        // on the media of the photographer page that links this lightbox media (href attr = src attribute)
+        let href = event.currentTarget.closest('.lightbox').querySelector('.lightbox__container .lightbox-media').getAttribute('src');
+        let mediaToFocusOnClosing = document.querySelector(`.media__card__img__wrapper[href="${href}"]`);
+        mediaToFocusOnClosing.focus();
+      }
+
+      console.log(event.currentTarget);
+      mediaToFocusOnClosing(event);
+      lightboxContainer.removeEventListener('keyup', onKeyUp);
+      closeLightbox.removeEventListener('keyup', onKeyUp);
+      closeLightbox.removeEventListener('click', close);
     }
     
     /**
@@ -123,11 +153,17 @@ function lightboxModal(medias) {
       if (event.key === 'Escape') {
         close(event);
       }
+      if (event.key === 'Enter') {
+        close(event);
+      }
     }
 
     const closeLightbox = document.querySelector('.lightbox__close');
     closeLightbox.addEventListener('click', close);
-    document.addEventListener('keyup', onKeyUp);
+    closeLightbox.addEventListener('keyup', onKeyUp);
+    const lightboxContainer = document.querySelector('.lightbox__container');
+    lightboxContainer.addEventListener('keyup', onKeyUp);
+    
 
     // BUTTON NEXT AND PREV TO NAVIGATE INTO THE LIGHTBOX
     
@@ -159,6 +195,10 @@ function lightboxModal(medias) {
 
       document.querySelector('.lightbox__next').removeEventListener('click', next);
       document.querySelector('.lightbox__prev').removeEventListener('click', previous);
+      lightboxContainer.removeEventListener('keyup', onKeyUp);
+      closeLightbox.removeEventListener('click', close);
+      closeLightbox.removeEventListener('keyup', onKeyUp);
+      document.querySelector('.lightbox__wrapper').removeEventListener('keyup', changeMedia);
       loadImage(heading, url);
     }
 
@@ -190,13 +230,29 @@ function lightboxModal(medias) {
 
       document.querySelector('.lightbox__prev').removeEventListener('click', previous);
       document.querySelector('.lightbox__next').removeEventListener('click', next);
+      lightboxContainer.removeEventListener('keyup', onKeyUp);
+      closeLightbox.removeEventListener('click', close);
+      closeLightbox.removeEventListener('keyup', onKeyUp);
+      document.querySelector('.lightbox__wrapper').removeEventListener('keyup', changeMedia);
       loadImage(heading, url);
     }
+
+    function changeMedia(event) {
+      if (event.key === 'ArrowRight') {
+        next(event);
+      }
+      if (event.key === 'ArrowLeft') {
+        previous(event);
+      }
+    }
+
+    document.querySelector('.lightbox__wrapper').addEventListener('keyup', changeMedia);
 
     document.querySelector('.lightbox__next').addEventListener('click', next);
     document.querySelector('.lightbox__prev').addEventListener('click', previous);
   }
-    return { links, loadImage };
+  
+  return { links, loadImage };
 }
 
 async function launchLightboxModal() {

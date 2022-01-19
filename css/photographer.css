@@ -257,10 +257,18 @@ option:hover {
     color: var(--color-primary);
     display: flex;
     justify-content: space-between;
+    font-size: 1.25rem;
 }
 
 .media__likes__wrapper .heart-icon-filled {
     margin-inline-start: 0.7rem;
+}
+
+/* Accessible text hidden that can be read by screen readers
+because font awesome icons are set as aria-hidden = 'true' */
+.likesAccessibleText, .totalLikesAccessibleText {
+   font-size: 0rem;
+   height: 0;
 }
 
 /* Likes counter on the bottom of the page */

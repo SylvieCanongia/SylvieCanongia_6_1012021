@@ -85,13 +85,13 @@ a {
     }
     /* only on keyboard focus */
     a:focus-visible {
-      outline: 2px dashed orange;
+      outline: 3px dashed orange;
     }
 
     button:focus-visible,
     select:focus-visible,
     i:focus-visible {
-        outline: 2px solid orange;
+        outline: 3px solid orange;
     }
   }
 
