@@ -12,7 +12,7 @@ function lightbox() {
  * @returns {HTMLElement} Template of the lightbox
  */
 const buildLightbox = (url) => {
-  const lightbox__wrapper = createElement('div', {className: 'lightbox__wrapper'}, undefined, 'body');
+  const lightbox__wrapper = createElement('div', {className: 'lightbox__wrapper', ariaLabel: 'Vue rapprochée de l\'image'}, undefined, 'body');
 
   const lightbox = createElement('div', {className: 'lightbox'}, undefined, 'div.lightbox__wrapper');
   const close = createElement('button', {className: 'lightbox__close', ariaLabel: 'Fermer la fenêtre'}, undefined, 'div.lightbox');

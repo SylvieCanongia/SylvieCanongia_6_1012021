@@ -47,7 +47,7 @@ async function displayPhotographerCard(photographers) {
   let portrait = photographers[photographerIndex].portrait;
   let picture = `assets/photographers/photographers_id_photos/${portrait}`;
   
-  createElement('img', { ariaLabel: name, src: picture }, undefined, '.photograph__header__portrait' )
+  createElement('img', { alt: name, src: picture }, undefined, '.photograph__header__portrait' )
 }
 
 // === DISPLAY OF THE MEDIAS CARDS ===

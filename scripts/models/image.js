@@ -10,7 +10,7 @@ function ImageTag(imgTag, imgName, altText, url) {
       'classIdAttr': {
         'className': "media__cardImg",
         'src': url,
-        'alt': `${altText}, vue rapprochée de l'image`
+        'alt': ``
       },
       'textContent': undefined,
       'appendTo': "div.media__card__wrapper"

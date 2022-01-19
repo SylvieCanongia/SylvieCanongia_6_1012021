@@ -39,7 +39,7 @@ function VideoTag(tag, videoName, altText, url) {
       'classIdAttr': {
         'className': "media__cardImg photographer-video",
         'src': url,
-        'ariaLabel': `${altText}, vue rapprochée de la vidéo`,
+        'ariaLabel': ``,
         'controls': 'controls'
       },
       'textContent': undefined,

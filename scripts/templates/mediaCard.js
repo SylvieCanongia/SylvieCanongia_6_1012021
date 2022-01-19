@@ -24,11 +24,11 @@ function mediaCard(media, name) {
 
     // link wrapper of the img or the video
     if(media.image){
-      createElement('a', {className: 'media__card__img__wrapper', href: picture}, undefined, 'div.media__card__wrapper');
+      createElement('a', {className: 'media__card__img__wrapper', href: picture, ariaLabel: `${altText}, vue rapprochée`}, undefined, 'div.media__card__wrapper');
     }
 
     if(media.video) {
-    createElement('a', {className: 'media__card__img__wrapper', href: film}, undefined, 'div.media__card__wrapper');
+    createElement('a', {className: 'media__card__img__wrapper', href: film, ariaLabel: `${altText}, vue rapprochée`}, undefined, 'div.media__card__wrapper');
     }
 
     // Create img or video element in function of the type of the element
@@ -58,8 +58,8 @@ function mediaCard(media, name) {
     createElement('div', {className: 'media__likes__wrapper'}, undefined, 'h2.media__CardHeading');
 
     // span into the heading with heart icon
-    createElement('span', {role: 'img', ariaLabel: "likes", className: "media__likes"}, likes, 'div.media__likes__wrapper');
-    createElement('i', {className: 'heart-icon-filled fas fa-heart media__heart', tabIndex: '-1'}, undefined, 'div.media__likes__wrapper');
+    createElement('span', {className: "media__likes"}, likes, 'div.media__likes__wrapper');
+    createElement('i', {className: 'heart-icon-filled fas fa-heart media__heart',role: 'img', ariaLabel: "likes", ariaHidden: false, tabIndex: '0'}, undefined, 'div.media__likes__wrapper');
     
     return (article);
   }
