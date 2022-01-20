@@ -33,15 +33,9 @@ function lightboxModal(medias) {
     const lightboxModel = lightbox();
     const url = event.currentTarget.getAttribute('href');
     const lightboxElement = lightboxModel.buildLightbox(url);
-    // return lightboxElement;
+    // Launch the function targetImage to display loader and then image
+    targetImage(event);
   }
-
-  // Launch the function loadImage to display loader and then image
-  links.forEach(link => link.addEventListener('click', targetImage));
-  // links.forEach(link => link.addEventListener('keyup', (event) => {
-  //   if( event.key === 'Enter') {
-  //     targetImage;
-  //   }}));
 
   /**
    * 
@@ -59,6 +53,33 @@ function lightboxModal(medias) {
 
       // On the opening, focus on the cross that close the lightbox
       // closingCross.focus();
+  }
+
+  function loadImage(heading, url) {
+    // let imagesUrls = links.map(link => link.getAttribute('href'));
+    const container = document.querySelector('.lightbox__container');
+    
+    container.innerHTML = "";
+  
+    const closingCross = document.querySelector('.lightbox__close');
+
+    // On the opening, focus on the cross that close the lightbox
+    closingCross.focus();
+    
+    // const lightboxContainer = document.querySelector('.lightbox__container');
+    console.log(`loadImage: heading : ${heading}`)
+    console.log(`loadImage: url : ${url}`)
+
+    document.querySelector('.lightbox__next').addEventListener('click', next.bind(null, heading, url));
+    document.querySelector('.lightbox__prev').addEventListener('click', previous.bind(null, heading, url));
+
+    document.querySelector('.lightbox__wrapper').addEventListener('keyup', changeMedia);
+    document.querySelector('.lightbox__container').addEventListener('keyup', onKeyUp);
+
+    document.querySelector('.lightbox__close').addEventListener('click', close);
+    document.querySelector('.lightbox__close').addEventListener('keyup', onKeyUp);
+
+    getImage(heading, url);
   }
 
   function getImage(heading, url) {
@@ -105,33 +126,7 @@ function lightboxModal(medias) {
     }
   }
 
-  function loadImage(heading, url) {
-    // let imagesUrls = links.map(link => link.getAttribute('href'));
-    const container = document.querySelector('.lightbox__container');
-    
-    container.innerHTML = "";
   
-    const closingCross = document.querySelector('.lightbox__close');
-
-    getImage(heading, url);
-
-    // On the opening, focus on the cross that close the lightbox
-    closingCross.focus();
-
-    
-    // const lightboxContainer = document.querySelector('.lightbox__container');
-    console.log(`loadImage: heading : ${heading}`)
-    console.log(`loadImage: url : ${url}`)
-
-    document.querySelector('.lightbox__next').addEventListener('click', next.bind(null, heading, url));
-    document.querySelector('.lightbox__prev').addEventListener('click', previous.bind(null, heading, url));
-
-    document.querySelector('.lightbox__wrapper').addEventListener('keyup', changeMedia);
-    document.querySelector('.lightbox__container').addEventListener('keyup', onKeyUp);
-
-    document.querySelector('.lightbox__close').addEventListener('click', close);
-    document.querySelector('.lightbox__close').addEventListener('keyup', onKeyUp);
-  }
     // ====================
     // CLOSE THE LIGHTBOX
     // ====================
@@ -267,7 +262,7 @@ function lightboxModal(medias) {
       }
     }
   
-  return { links, loadImage, getImage };
+  // return { links, loadImage, getImage };
 }
 
 async function launchLightboxModal() {
