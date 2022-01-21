@@ -74,10 +74,10 @@ function lightboxModal(medias) {
     document.querySelector('.lightbox__prev').addEventListener('click', previous.bind(null, heading, url));
 
     document.querySelector('.lightbox__wrapper').addEventListener('keyup', changeMedia);
-    document.querySelector('.lightbox__container').addEventListener('keyup', onKeyUp);
+    document.querySelector('.lightbox__wrapper').addEventListener('keydown', onKeyUp);
 
     document.querySelector('.lightbox__close').addEventListener('click', close);
-    document.querySelector('.lightbox__close').addEventListener('keyup', onKeyUp);
+    document.querySelector('.lightbox__close').addEventListener('keyup', onKeyDown);
 
     getImage(heading, url);
   }
@@ -135,7 +135,7 @@ function lightboxModal(medias) {
    * @param {KeyboardEvent} event
    * 
    */
-      function onKeyUp(event) {
+      function onKeyUp(event) { 
         if (event.key === 'Escape') {
           close(event);
         }
@@ -143,6 +143,16 @@ function lightboxModal(medias) {
           close(event);
         }
       }
+
+      function onKeyDown(event) { 
+        if (event.key === 'Escape') {
+          close(event);
+        }
+        // if (event.key === 'Enter') {
+        //   close(event);
+        // }
+      }
+    
 
     /**
    * Close the lightbox
@@ -152,6 +162,10 @@ function lightboxModal(medias) {
     function close(event) {
       event.preventDefault();
       // const closingCross = document.querySelector('.lightbox__close');
+      document.querySelector('.lightbox__close').removeEventListener('keyup', onKeyDown);
+      document.querySelector('.lightbox__close').removeEventListener('click', close);
+      document.querySelector('.lightbox__wrapper').removeEventListener('keyup',  onKeyUp);
+
       document.querySelector('.lightbox__wrapper').remove();
       
       function mediaToFocusOnClosing(event) {
@@ -165,10 +179,6 @@ function lightboxModal(medias) {
 
       console.log(event.currentTarget);
       mediaToFocusOnClosing(event);
-      
-      document.querySelector('.lightbox__container').removeEventListener('keyup', onKeyUp);
-      document.querySelector('.lightbox__close').removeEventListener('keyup', onKeyUp);
-      document.querySelector('.lightbox__close').removeEventListener('click', close);
     }
 
     // ==================================================
