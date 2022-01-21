@@ -74,10 +74,10 @@ function lightboxModal(medias) {
     document.querySelector('.lightbox__prev').addEventListener('click', previous.bind(null, heading, url));
 
     document.querySelector('.lightbox__wrapper').addEventListener('keyup', changeMedia);
-    document.querySelector('.lightbox__wrapper').addEventListener('keydown', onKeyUp);
+    document.querySelector('.lightbox__wrapper').addEventListener('keydown', onKeyDown);
 
     document.querySelector('.lightbox__close').addEventListener('click', close);
-    document.querySelector('.lightbox__close').addEventListener('keyup', onKeyDown);
+    document.querySelector('.lightbox__close').addEventListener('keyup', onKeyUp);
 
     getImage(heading, url);
   }
@@ -139,18 +139,18 @@ function lightboxModal(medias) {
         if (event.key === 'Escape') {
           close(event);
         }
-        if (event.key === 'Enter') {
-          close(event);
-        }
+        // if (event.key === 'Enter') {
+        //   close(event);
+        // }
       }
 
       function onKeyDown(event) { 
         if (event.key === 'Escape') {
           close(event);
         }
-        // if (event.key === 'Enter') {
-        //   close(event);
-        // }
+        if (event.key === 'Enter') {
+          close(event);
+        }
       }
     
 
@@ -162,9 +162,9 @@ function lightboxModal(medias) {
     function close(event) {
       event.preventDefault();
       // const closingCross = document.querySelector('.lightbox__close');
-      document.querySelector('.lightbox__close').removeEventListener('keyup', onKeyDown);
+      document.querySelector('.lightbox__close').removeEventListener('keyup', onKeyUp);
       document.querySelector('.lightbox__close').removeEventListener('click', close);
-      document.querySelector('.lightbox__wrapper').removeEventListener('keyup',  onKeyUp);
+      document.querySelector('.lightbox__wrapper').removeEventListener('keydown',  onKeyDown);
 
       document.querySelector('.lightbox__wrapper').remove();
       
