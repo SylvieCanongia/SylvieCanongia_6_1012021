@@ -123,8 +123,9 @@ h1 {
 }
 
 /* === TAGS === */
+/* For a further version */
 
-.header__tags {
+/* .header__tags {
     display: flex;
     font-size: 0.9rem;
     margin-inline: 24px;
@@ -136,7 +137,7 @@ h1 {
     color: var(--color-primary);
     border-radius: 20px;
     padding: 3px 7px;
-}
+} */
 
 /* === CARDS === */
 
