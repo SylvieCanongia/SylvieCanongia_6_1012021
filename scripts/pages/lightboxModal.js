@@ -60,7 +60,7 @@ function lightboxModal(medias) {
     document.querySelector('.lightbox__prev').addEventListener('click', previous);
 
     document.querySelector('.lightbox__wrapper').addEventListener('keyup', changeMedia);
-    document.querySelector('.lightbox__wrapper').addEventListener('keydown', onKeyUp);
+    document.querySelector('.lightbox__wrapper').addEventListener('keyup', onKeyUp);
 
     document.querySelector('.lightbox__close').addEventListener('click', close);
     document.querySelector('.lightbox__close').addEventListener('keyup', onKeyUp);
@@ -148,7 +148,7 @@ function lightboxModal(medias) {
 
       document.querySelector('.lightbox__close').removeEventListener('keyup', onKeyUp);
       document.querySelector('.lightbox__close').removeEventListener('click', close);
-      document.querySelector('.lightbox__wrapper').removeEventListener('keydown',  onKeyUp);
+      document.querySelector('.lightbox__wrapper').removeEventListener('keyup',  onKeyUp);
 
       function mediaToFocusOnClosing() {
         // Focus on the media of the photographer page that links this lightbox media (href attr = src attribute)
@@ -235,10 +235,10 @@ function lightboxModal(medias) {
 
     function changeMedia(event) {
       if (event.key === 'ArrowRight') {
-        next(event);
+        next();
       }
       if (event.key === 'ArrowLeft') {
-        previous(event);
+        previous();
       }
     }
 }
