@@ -16,13 +16,9 @@ function lightboxModal(medias) {
   const headings = Array.from(document.querySelectorAll('.media__CardHeading__h2'));
 
   let imagesUrls = links.map(link => link.getAttribute('href'));
-  
+
   // Launch the function get Lightbox that creates the lightbox template
   links.forEach(link => link.addEventListener('click', getLightbox));
-  // links.forEach(link => link.addEventListener('keyup', (event) => {
-  //   if( event.key === 'Enter') {
-  //     getLightbox;
-  //   }}));
 
   /**
    * Get the template of the lightbox without the media inside
@@ -53,23 +49,18 @@ function lightboxModal(medias) {
   }
 
   function loadImage(heading, url) {
-    // let imagesUrls = links.map(link => link.getAttribute('href'));
     const container = document.querySelector('.lightbox__container');
     container.innerHTML = "";
   
     const closingCross = document.querySelector('.lightbox__close');
 
-    // const lightboxContainer = document.querySelector('.lightbox__container');
-    console.log(`loadImage: heading : ${heading}`)
-    console.log(`loadImage: url : ${url}`)
-
     getImage(heading, url);
 
-    document.querySelector('.lightbox__next').addEventListener('click', function() {next(heading, url)});
-    document.querySelector('.lightbox__prev').addEventListener('click', function() {previous(heading, url)});
+    document.querySelector('.lightbox__next').addEventListener('click', next);
+    document.querySelector('.lightbox__prev').addEventListener('click', previous);
 
     document.querySelector('.lightbox__wrapper').addEventListener('keyup', changeMedia);
-    document.querySelector('.lightbox__wrapper').addEventListener('keydown', onKeyDown);
+    document.querySelector('.lightbox__wrapper').addEventListener('keydown', onKeyUp);
 
     document.querySelector('.lightbox__close').addEventListener('click', close);
     document.querySelector('.lightbox__close').addEventListener('keyup', onKeyUp);
@@ -84,17 +75,14 @@ function lightboxModal(medias) {
   }
 
   function getImage(heading, url) {
-      const container = document.querySelector('.lightbox__container');
-      console.log("getImage : var container :", container) 
+      const container = document.querySelector('.lightbox__container'); 
 
      //  Create img or video element in function of the type of the element (based on file url extension)
      let ext = getExtension(url);
-
     if(ext == "jpg"){
       lightboxFactory("image", heading , url);
 
       const imageElement = document.querySelector('.lightbox-media');
-
       createElement('h2', { className: 'lightbox__imageHeading lightbox__heading'}, heading, 'div.lightbox__container');
       
       // Add a loader into 'container'
@@ -126,7 +114,6 @@ function lightboxModal(medias) {
       }
     }
   }
-
   
     // ====================
     // CLOSE THE LIGHTBOX
@@ -139,21 +126,10 @@ function lightboxModal(medias) {
       function onKeyUp(event) { 
         if (event.key === 'Escape') {
           close(event);
-        }
-        if (event.key === 'Enter') {
+        } else if (event.key === 'Enter') {
           close(event);
         }
       }
-
-      function onKeyDown(event) { 
-        if (event.key === 'Escape') {
-          close(event);
-        }
-        if (event.key === 'Enter') {
-          close(event);
-        }
-      }
-    
 
     /**
    * Close the lightbox
@@ -162,24 +138,26 @@ function lightboxModal(medias) {
    */
     function close(event) {
       event.preventDefault();
-      // const closingCross = document.querySelector('.lightbox__close');
-      document.querySelector('.lightbox__close').removeEventListener('keyup', onKeyUp);
-      document.querySelector('.lightbox__close').removeEventListener('click', close);
-      document.querySelector('.lightbox__wrapper').removeEventListener('keydown',  onKeyDown);
-
-      document.querySelector('.lightbox__wrapper').remove();
-      
-      function mediaToFocusOnClosing(event) {
-        // Get the src attribute of the current media on the lightbox to focus on closing
-        // on the media of the photographer page that links this lightbox media (href attr = src attribute)
-        let href = event.currentTarget.closest('.lightbox').querySelector('.lightbox__container .lightbox-media').getAttribute('src');
-        let mediaToFocusOnClosing = document.querySelector(`.media__card__img__wrapper[href="${href}"]`);
-        mediaToFocusOnClosing.focus();
-        console.log(mediaToFocusOnClosing)
+      let href = "";
+      // Get the src attribute of the current media on the lightbox to focus on closing
+      if (event.currentTarget.querySelector('.lightbox__container')) {
+        href = event.currentTarget.querySelector('.lightbox__container .lightbox-media').getAttribute('src');
+      } else if (event.currentTarget.closest('.lightbox')) {
+        href = event.currentTarget.closest('.lightbox').querySelector('.lightbox__container .lightbox-media').getAttribute('src');
       }
 
-      console.log(event.currentTarget);
-      mediaToFocusOnClosing(event);
+      document.querySelector('.lightbox__close').removeEventListener('keyup', onKeyUp);
+      document.querySelector('.lightbox__close').removeEventListener('click', close);
+      document.querySelector('.lightbox__wrapper').removeEventListener('keydown',  onKeyUp);
+
+      function mediaToFocusOnClosing() {
+        // Focus on the media of the photographer page that links this lightbox media (href attr = src attribute)
+        let mediaToFocusOnClosing = document.querySelector(`.media__card__img__wrapper[href="${href}"]`);
+        mediaToFocusOnClosing.focus();
+      }
+
+      mediaToFocusOnClosing();
+      document.querySelector('.lightbox__wrapper').remove();
     }
 
     // ==================================================
@@ -190,14 +168,13 @@ function lightboxModal(medias) {
      * 
      * @param {MouseEvent|KeyboardEvent} event 
      */
-    function next(heading, url) {
+    function next() {
+      let heading = document.querySelector('.lightbox__container h2').textContent;
+      let url = document.querySelector('.lightbox__container .lightbox-media').getAttribute('src');
       const lightboxMedia = document.querySelector('.lightbox-media');
-      console.log(lightboxMedia)
       const lightboxHeading = document.querySelector('.lightbox__heading');
-      console.log(`next : heading : ${heading}`)
-      console.log(`next : url : ${url}`)
+
       let currentIndex = imagesUrls.findIndex(mediaUrl => mediaUrl === url);
-      console.log(currentIndex)
       let nextUrl="";
       let nextHeading="";
       if (currentIndex == imagesUrls.length -1) {
@@ -208,21 +185,14 @@ function lightboxModal(medias) {
       nextHeading = headings[currentIndex + 1].textContent;
         
       // Remove the heading and media before creating the following
-      // const lightboxMedia = document.querySelector('.lightbox-media');
-      // const lightboxHeading = document.querySelector('.lightbox__heading');
-      
       lightboxMedia.remove();
       lightboxHeading.remove();
 
       url = nextUrl;
       heading = nextHeading;
-      // loadImage(heading, url);
 
-      document.querySelector('.lightbox__next').removeEventListener('click', function() {next(heading, url)});
-      document.querySelector('.lightbox__prev').removeEventListener('click', function() {previous(heading, url)});
-      // document.querySelector('.lightbox__container').removeEventListener('keyup', onKeyUp);
-      // document.querySelector('.lightbox__close').removeEventListener('click', close);
-      // document.querySelector('.lightbox__close').removeEventListener('keyup', onKeyUp);
+      document.querySelector('.lightbox__next').removeEventListener('click', next);
+      document.querySelector('.lightbox__prev').removeEventListener('click', previous);
       document.querySelector('.lightbox__wrapper').removeEventListener('keyup', changeMedia);
 
       loadImage(heading, url);
@@ -232,11 +202,13 @@ function lightboxModal(medias) {
      * 
      * @param {MouseEvent|KeyboardEvent} event 
      */
-    function previous(heading, url) {
-      console.log(`previous : heading : ${heading}`)
-      console.log(`previous : url : ${url}`)
+    function previous() {
+      let heading = document.querySelector('.lightbox__container h2').textContent;
+      let url = document.querySelector('.lightbox__container .lightbox-media').getAttribute('src');
+      const lightboxMedia = document.querySelector('.lightbox-media');
+      const lightboxHeading = document.querySelector('.lightbox__heading');
+
       let currentIndex = imagesUrls.findIndex(mediaUrl => mediaUrl === url);
-      console.log(currentIndex)
       let previousUrl="";
       let previousHeading="";
       if (currentIndex == 0) {
@@ -244,24 +216,17 @@ function lightboxModal(medias) {
       }
       
       previousUrl = imagesUrls[currentIndex - 1];
-      console.log(previousUrl)
       previousHeading = headings[currentIndex -1].textContent;
-      console.log(previousHeading)
 
       // Remove the heading and media before creating the following
-      const lightboxMedia = document.querySelector('.lightbox-media');
-      const lightboxHeading = document.querySelector('.lightbox__heading');
       lightboxMedia.remove();
       lightboxHeading.remove();
 
       url = previousUrl;
       heading = previousHeading;
       
-      document.querySelector('.lightbox__prev').removeEventListener('click', previous);
       document.querySelector('.lightbox__next').removeEventListener('click', next);
-      // document.querySelector('.lightbox__container').removeEventListener('keyup', onKeyUp);
-      // document.querySelector('.lightbox__close').removeEventListener('click', close);
-      // document.querySelector('.lightbox__close').removeEventListener('keyup', onKeyUp);
+      document.querySelector('.lightbox__prev').removeEventListener('click', previous);
       document.querySelector('.lightbox__wrapper').removeEventListener('keyup', changeMedia);
 
       loadImage(heading, url);
@@ -276,8 +241,6 @@ function lightboxModal(medias) {
         previous(event);
       }
     }
-  
-  // return { links, loadImage, getImage };
 }
 
 async function launchLightboxModal() {

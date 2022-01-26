@@ -10,7 +10,6 @@ import { createElement, getExtension } from './../utils/functions.js';
 function LightboxImageTag(imgTag, imgName, url) {
 
   let ext = getExtension(url);
-  
   if(ext == "jpg") {
     let obj = {
       'elementName': `${imgTag}`,
