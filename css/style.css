@@ -85,13 +85,15 @@ a {
     }
     /* only on keyboard focus */
     a:focus-visible {
-      outline: 3px dashed orange;
+      outline: 3px dashed var(--color-secondary);
+      z-index: 3;
     }
 
     button:focus-visible,
     select:focus-visible,
     i:focus-visible {
-        outline: 3px solid orange;
+        outline: 3px solid var(--color-secondary);
+        z-index: 3; 
     }
   }
 
