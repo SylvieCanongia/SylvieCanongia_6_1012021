@@ -81,10 +81,11 @@ async function displayMediaData(medias, photographers) {
   // SORTING OF THE PHOTOGRAPHER'S MEDIAS via the select
   let selectElement = document.querySelector('#sorting__list');
   selectElement.addEventListener('change', manageSorting);
+  selectElement.addEventListener('change', manageLikesUpdate);
 
   function manageSorting(event) {
     sorting(event, mediasArray);
-    
+
     mediasSection.innerHTML = "";
 
     mediasArray.forEach((media) => {
@@ -98,10 +99,13 @@ async function displayMediaData(medias, photographers) {
     launchLightboxModal();
   }
 
-  // Function that increment the likes on each media and the total likes on the bottom of the page
-  const _manageLikes = manageLikes();
-  // Manage the listeners on the medias heart for incrementing and display of the total
-  const _manageMediaLikes = _manageLikes.manageMediaLikes();
+  function manageLikesUpdate() {
+    // Function that increment the likes on each media and the total likes on the bottom of the page
+    const _manageLikes = manageLikes();
+    // Manage the listeners on the medias heart for incrementing and display of the total
+    const _manageMediaLikes = _manageLikes.manageMediaLikes();
+  }
+  manageLikesUpdate();
 
   // Insert the price per day after the likes on the bottom of the page
   photographers.forEach((photographer) => {
