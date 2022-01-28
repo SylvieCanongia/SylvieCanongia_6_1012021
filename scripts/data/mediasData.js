@@ -4,7 +4,6 @@ async function getMedias() {
   await fetch('./data/photographers.json')
     .then((res) => res.json())
     .then((res) => {
-      res.medias;
       medias = res.medias;
     })
     // eslint-disable-next-line no-console

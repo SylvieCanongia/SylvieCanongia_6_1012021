@@ -1,15 +1,16 @@
-document.addEventListener('DOMContentLoaded', () => { 
-
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-inner-declarations */
+document.addEventListener('DOMContentLoaded', () => {
   // DOM Elements
   // const modalbg = document.querySelector(".confirmModal");
-  
-  const formData = document.querySelectorAll(".formData");
-  const closeConfirmModalCrossElement = document.querySelector(".closeConfirmModal");
+
+  const formData = document.querySelectorAll('.formData');
+  const closeConfirmModalCrossElement = document.querySelector('.closeConfirmModal');
   // get the form element
-  const forms = document.querySelectorAll("form[data-form]");
-  const formElement = document.querySelector("form[data-form]");
-  const modalConfirmContainer = document.querySelector(".confirmModal");
-  const modalConfirmElement = document.querySelector(".confirmModal__box");
+  const forms = document.querySelectorAll('form[data-form]');
+  const formElement = document.querySelector('form[data-form]');
+  const modalConfirmContainer = document.querySelector('.confirmModal');
+  const modalConfirmElement = document.querySelector('.confirmModal__box');
 
   // Managing of the errors
   let error;
@@ -36,13 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const keyValues = {
     enter: 'Enter',
     escape: 'Escape',
-    tab: 'Tab'
+    tab: 'Tab',
   };
 
   // ==============================================
   // === Modal contact opening and closing ===
   // ==============================================
- 
+
   // ==================
   // === OPEN MODAL ===
 
@@ -56,13 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const focusableElements = dialog.querySelectorAll(focusableElementsArray);
     const firstFocusableElement = focusableElements[0];
     const lastFocusableElement = focusableElements[focusableElements.length - 1];
-    
-     // Activate modal and disable main element when modal window opens
+
+    // Activate modal and disable main element when modal window opens
     dialog.setAttribute('aria-hidden', false);
     mainElement.setAttribute('aria-hidden', true);
 
     // return if no focusable element
-    if(!firstFocusableElement) {
+    if (!firstFocusableElement) {
       return;
     }
 
@@ -73,23 +74,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // keep the focus inside the dialog
       focusableElements.forEach((focusableElement) => {
-        if(focusableElement.addEventListener) {
+        if (focusableElement.addEventListener) {
           focusableElement.addEventListener('keydown', (event) => {
             const tab = event.key === keyValues.tab;
 
-            if(!tab) {
+            if (!tab) {
               return;
             }
 
             // Then if tab is pressed :
-            if(event.shiftKey) {
-              if(event.target === firstFocusableElement) {
+            if (event.shiftKey) {
+              if (event.target === firstFocusableElement) {
                 event.preventDefault();
                 lastFocusableElement.focus();
               }
             } else if (event.target === lastFocusableElement) {
-                event.preventDefault();
-                firstFocusableElement.focus();
+              event.preventDefault();
+              firstFocusableElement.focus();
             }
           });
         }
@@ -110,11 +111,11 @@ document.addEventListener('DOMContentLoaded', () => {
     mainElement.setAttribute('aria-hidden', false);
 
     // Removes the error messages
-    formData.forEach(formD => {
-      formD.setAttribute("data-error-visible", "false");
-      formD.setAttribute("data-error", "");
+    formData.forEach((formD) => {
+      formD.setAttribute('data-error-visible', 'false');
+      formD.setAttribute('data-error', '');
     });
-    error = "";
+    error = '';
 
     // Restore focus on the trigger that open the modal
     trigger.focus();
@@ -127,19 +128,19 @@ document.addEventListener('DOMContentLoaded', () => {
   triggers.forEach((trigger) => {
     // Get the modal linked to the trigger via aria-controls attribute
     const dialog = document.getElementById(trigger.getAttribute('aria-controls'));
-    
+
     // Get all the triggers for closing the modal via data attribute
     const closeTriggers = dialog.querySelectorAll('[data-close]');
-    
+
     // Open the dialog modal via event 'click' on button
-    trigger.addEventListener("click", (event) => {
+    trigger.addEventListener('click', (event) => {
       event.preventDefault();
       openModal(dialog);
     });
 
     // Open the dialog modal on pressing 'Enter' key
     trigger.addEventListener('keydown', (event) => {
-      if(event.key === keyValues.enter) {
+      if (event.key === keyValues.enter) {
         event.preventDefault();
         openModal(dialog);
       }
@@ -150,22 +151,23 @@ document.addEventListener('DOMContentLoaded', () => {
     closeTriggers.forEach((closeTrigger) => {
       // Get the modal matching with the trigger via the id
       const dialogModalToClose = document.getElementById(closeTrigger.dataset.close);
-      
+
       //  Close by click on the trigger
-      closeTrigger.addEventListener('click', (event) => {
+      closeTrigger.addEventListener('click', () => {
         closeModal(dialogModalToClose, trigger);
       });
 
       closeTrigger.addEventListener('keydown', (event) => {
-        if(event.key === keyValues.enter) {
+        if (event.key === keyValues.enter) {
           event.preventDefault();
           closeModal(dialogModalToClose, trigger);
-        }});
+        }
+      });
     });
 
     // Close the dialog modal on pressing 'Escape' key
     dialog.addEventListener('keydown', (event) => {
-      if(event.key === keyValues.escape) {
+      if (event.key === keyValues.escape) {
         event.preventDefault();
         closeModal(dialog, trigger);
       }
@@ -173,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close the modal by click on modal background
     window.addEventListener('click', (event) => {
-      if(event.target === dialog) {
+      if (event.target === dialog) {
         closeModal(dialog, trigger);
       }
     });
@@ -186,22 +188,24 @@ document.addEventListener('DOMContentLoaded', () => {
   // Check if form exist
   if (forms.length > 0) {
     // Loop on all elements
-    for (let form of forms) {
+    // for (const form of forms) {
+    forms.forEach((form) => {
       // Get all inputs that have to be validated (have data-validate attribute)
-      const inputs = form.querySelectorAll("[data-validate]");
+      const inputs = form.querySelectorAll('[data-validate]');
 
       // Listen the form submit event and submit the form
       // bind allow to pass all inputs as argument
-      form.addEventListener("submit", submitForm.bind(form, inputs));
-    }
+      form.addEventListener('submit', submitForm.bind(form, inputs));
+    });
   }
+  // }
 
   // ======================
   // === VALIDATE INPUT ===
   // ======================
 
   /**
-   * 
+   *
    * @param {HTMLElement} input Input element of the form for validation
    * @returns If there are errors, displays a message under the concerned fields,
    * else return no error
@@ -209,8 +213,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function validateInput(input) {
     // get the value and formData element for assigning error message
     // (via CSS pseudo-elements)
-    const value = input.value;
-    const formDataElement = input.closest("[data-formData]");
+    const { value } = input;
+    const formDataElement = input.closest('[data-formData]');
     // Declare error variable for displaying error messages and assign null by default
     error = null;
 
@@ -219,16 +223,16 @@ document.addEventListener('DOMContentLoaded', () => {
     //  -> and the value is empty and the value has a required minlength
     // -> the input value is < to the minlength
     if (
-      input.type !== "radio" &&
-      input.type !== "checkbox" &&
-      input.dataset.required !== undefined &&
-      input.dataset.minlength !== undefined &&
-      value.length < input.dataset.minlength
+      input.type !== 'radio'
+      && input.type !== 'checkbox'
+      && input.dataset.required !== undefined
+      && input.dataset.minlength !== undefined
+      && value.length < input.dataset.minlength
     ) {
       // Set an error message to the data-error attribute for display to the user
       formDataElement.setAttribute(
-        "data-error",
-        `Ce champ est requis. Veuillez entrer au moins ${input.dataset.minlength} caractères.`
+        'data-error',
+        `Ce champ est requis. Veuillez entrer au moins ${input.dataset.minlength} caractères.`,
       );
       error = formDataElement.dataset.error;
     }
@@ -236,32 +240,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check if input has data-email attribute and if email is not valid with validateEmail function
     if (input.dataset.email !== undefined && !validateEmail(value)) {
       formDataElement.setAttribute(
-        "data-error",
-        "Ce champ est requis. Veuillez entrer une adresse email valide."
+        'data-error',
+        'Ce champ est requis. Veuillez entrer une adresse email valide.',
       );
       error = formDataElement.dataset.error;
     }
 
     /**
-     * 
+     *
      * @param {String} String Email adress
      * @returns Boolean. True if the email matches the regex, else false
      */
     function validateEmail(email) {
-      const regexMail =
-        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      const regexMail = /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return regexMail.test(String(email).toLowerCase());
     }
 
     // If there is no error, remove message from error element and so data-error attribute
     // and set data-error-visible attribute to false
     if (!error) {
-      formDataElement.setAttribute("data-error-visible", "false");
-      error = "";
-      formDataElement.setAttribute("data-error", "");
-
+      formDataElement.setAttribute('data-error-visible', 'false');
+      error = '';
+      formDataElement.setAttribute('data-error', '');
     } else {
-      formDataElement.setAttribute("data-error-visible", "true");
+      formDataElement.setAttribute('data-error-visible', 'true');
     }
     return error;
   }
@@ -272,7 +274,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * Submits the form on click on the submit button and calls validateInput() on each input element
-   * @param {NodeList} inputs List of all the inputs of the form by id/class (ex: input#first.text-control)
+   * @param {NodeList} inputs List of all the inputs of the form by id/class
+   * (ex: input#first.text-control)
    * @param {MouseEvent} event
    */
   function submitForm(inputs, event) {
@@ -280,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
     errors = [];
 
     inputs.forEach((input) => {
-      const error = validateInput(input);
+      validateInput(input);
       if (error) {
         errors.push(error);
       }
@@ -310,44 +313,44 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   function confirmSubmission() {
     // open the modal of confirmation
-    modalConfirmContainer.style.display = "block";
+    modalConfirmContainer.style.display = 'block';
 
     // Display a message after form validation success
     // 1. Create a div element
-    const divElement = document.createElement("div");
-    divElement.className = "confirmModal__body";
+    const divElement = document.createElement('div');
+    divElement.className = 'confirmModal__body';
 
     // 2. Put a p element into the div element
-    const pElement = document.createElement("p");
-    pElement.textContent = "Merci pour votre message. Nous vous répondrons dans les meilleurs délais.";
+    const pElement = document.createElement('p');
+    pElement.textContent = 'Merci pour votre message. Nous vous répondrons dans les meilleurs délais.';
 
     divElement.appendChild(pElement);
 
     // Add a button for closing the confirmation modal
-    const buttonElement = document.createElement("input");
-    buttonElement.classList.add("btn-submit", "btn-close-modal");
-    buttonElement.setAttribute("type", "button");
-    buttonElement.setAttribute("value", "Fermer");
+    const buttonElement = document.createElement('input');
+    buttonElement.classList.add('btn-submit', 'btn-close-modal');
+    buttonElement.setAttribute('type', 'button');
+    buttonElement.setAttribute('value', 'Fermer');
 
     divElement.appendChild(buttonElement);
 
     // Put the div element into the modal body
     modalConfirmElement.appendChild(divElement);
 
-    closeConfirmModalCrossElement.addEventListener("click", closeConfirmModal);
+    closeConfirmModalCrossElement.addEventListener('click', closeConfirmModal);
 
-    const btnCloseModalElement = document.querySelector(".btn-close-modal");
+    const btnCloseModalElement = document.querySelector('.btn-close-modal');
     btnCloseModalElement.focus();
-    btnCloseModalElement.addEventListener("click", closeConfirmModal);
+    btnCloseModalElement.addEventListener('click', closeConfirmModal);
     btnCloseModalElement.addEventListener('keydown', (event) => {
-      if(event.key === keyValues.enter) {
+      if (event.key === keyValues.enter) {
         event.preventDefault();
         closeConfirmModal();
       }
     });
 
     modalConfirmElement.addEventListener('keydown', (event) => {
-      if(event.key === keyValues.escape) {
+      if (event.key === keyValues.escape) {
         event.preventDefault();
         closeConfirmModal();
       }
@@ -363,15 +366,14 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   function closeConfirmModal() {
     // Select and remove the p Element
-    modalConfirmElement.querySelector("p").remove();
+    modalConfirmElement.querySelector('p').remove();
     // Select and remove the button Element
-    modalConfirmElement.querySelector(".btn-close-modal").remove();
+    modalConfirmElement.querySelector('.btn-close-modal').remove();
     // Select and remove the div Element
-    modalConfirmElement.querySelector(".confirmModal__body").remove();
+    modalConfirmElement.querySelector('.confirmModal__body').remove();
     // close the modal
-    modalConfirmContainer.style.display = "none";
+    modalConfirmContainer.style.display = 'none';
     const triggerToFocus = document.querySelector('.contactButton');
-    console.log(triggerToFocus);
     triggerToFocus.focus();
 
     // hide the form content
@@ -389,9 +391,9 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   function logDatas() {
     const datas = document.querySelectorAll('[data-validate]');
-    datas.forEach(data => {
+    datas.forEach((data) => {
+      // eslint-disable-next-line no-console
       console.log(`${data.name} : ${data.value}`);
-    })
+    });
   }
-
 });
