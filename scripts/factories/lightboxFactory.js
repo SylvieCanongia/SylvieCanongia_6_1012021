@@ -1,4 +1,4 @@
-import { LightboxImageTag } from './../models/lightboxImage.js';
+import { LightboxImageTag } from '../models/lightboxImage.js';
 import { LightboxVideoTag } from './../models/lightboxVideo.js';
 
 
@@ -11,16 +11,17 @@ import { LightboxVideoTag } from './../models/lightboxVideo.js';
  * @returns function that creates the 'type' element
  */
 function lightboxFactory(type, mediaName, url) {
-    switch (type) {
-      case "image":
-        return LightboxImageTag("img", mediaName, url);
-        break;
-      case "video":
-        return LightboxVideoTag("video", mediaName, url);
-        break;
-      default:
-        console.log("Sorry, media not found");
-    }
+  switch (type) {
+    case 'image':
+      LightboxImageTag('img', mediaName, url);
+      break;
+    case 'video':
+      LightboxVideoTag('video', mediaName, url);
+      break;
+    default:
+    // eslint-disable-next-line no-console
+      console.log('Sorry, media not found');
   }
+}
 
-  export { lightboxFactory };
+export { lightboxFactory };

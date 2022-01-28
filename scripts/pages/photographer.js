@@ -84,6 +84,12 @@ async function displayMediaData(medias, photographers) {
   selectElement.addEventListener('change', manageLikesUpdate);
 
   function manageSorting(event) {
+    const mediaLikesElementsArray = Array.from(document.querySelectorAll('.media__likes'));
+    console.log(mediaLikesElementsArray)
+    mediaLikesElementsArray.forEach(element => {
+      
+    })
+
     sorting(event, mediasArray);
 
     mediasSection.innerHTML = "";

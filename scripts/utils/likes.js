@@ -6,9 +6,9 @@ function manageLikes() {
   // Dom Elements of each media
   // nb of likes and heart icon
   const mediaLikesNumberElements = document.querySelectorAll('.media__likes');
-  let mediaLikesNumberElementsArray = Array.from(mediaLikesNumberElements);
+  // let mediaLikesNumberElementsArray = Array.from(mediaLikesNumberElements);
   const mediaHeartsElements = document.querySelectorAll('.media__heart');
-  let mediaHeartsElementsArray = Array.from(mediaHeartsElements);
+  // let mediaHeartsElementsArray = Array.from(mediaHeartsElements);
 
   // Total likes element on the bottom of the page
   const pageLikesElement = document.querySelector('.totalLikes');
@@ -73,7 +73,7 @@ function manageLikes() {
    * on the bottom of the page 
    */
   const manageMediaLikes = () => {
-    mediaHeartsElementsArray.forEach((mediaHeart) => {
+    mediaHeartsElements.forEach((mediaHeart) => {
       mediaHeart.addEventListener('click', incrementMediaLikes);
       mediaHeart.addEventListener('click', managePageLikes);
       mediaHeart.addEventListener('keyup', onKeyUp);
