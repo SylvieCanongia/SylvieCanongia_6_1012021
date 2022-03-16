@@ -83,6 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Then if tab is pressed :
+            // if shift key or shift + tab are pressed, go to the last or the first element
+            // in function of the actual position
             if (event.shiftKey) {
               if (event.target === firstFocusableElement) {
                 event.preventDefault();
@@ -375,9 +377,6 @@ document.addEventListener('DOMContentLoaded', () => {
     modalConfirmContainer.style.display = 'none';
     const triggerToFocus = document.querySelector('.contactButton');
     triggerToFocus.focus();
-
-    // hide the form content
-    // formElement.style.display = "block";
   }
 
   // ========================================

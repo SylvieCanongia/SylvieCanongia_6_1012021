@@ -15,7 +15,7 @@
   position: absolute;
   bottom: 20px;
   left: 50%;
-  margin-left: -150px;
+  margin-inline-start: -150px;
   background: linear-gradient(to bottom, #222, #666);
   background-image: linear-gradient(rgb(34, 34, 34), rgb(102, 102, 102));
   box-shadow: 3px 3px 5px var(--color-black);
@@ -108,3 +108,14 @@
   z-index: 3;
   left: 15px;
 }
+
+@media screen and (max-width: 900px) {
+  /* Style the wrapper of the buttons */
+  .controls, .photographer-controls,
+  .lightbox-controls {
+    width: 250px;
+    max-width: 250px;
+    margin-inline-start: -125px;
+  }
+}
+

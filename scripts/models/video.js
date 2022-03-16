@@ -4,16 +4,9 @@ const addVideoControls = () => {
   const controls = createElement('div', { className: 'photographer-controls' }, undefined, 'article .media__card__wrapper');
   const playPauseButton = createElement('button', { className: 'photographer-playPauseButton', ariaLabel: 'Lecture ou pause' }, undefined, 'div.photographer-controls');
   playPauseButton.setAttribute('data-icon', 'P');
-  // let iconPlay = createElement('i', {className: 'fas fa-play'}, undefined, '.playPauseButton');
-  // let iconPause = createElement('i', {className: 'fas fa-pause'}, undefined, '.playButton');
-  // iconPause.setAttribute('data-icon', 'pause');
-
-  // let pauseButton = createElement('div', {className: "pauseButton"}, undefined, 'div.controls');
-  // let iconPause = createElement('i', {className: 'fas fa-pause'}, undefined, '.pauseButton');
 
   const stopButton = createElement('button', { className: 'photographer-stopButton', ariaLabel: 'Stop' }, undefined, 'div.photographer-controls');
   stopButton.setAttribute('data-icon', 'S');
-  // let iconStop = createElement('i', {className: 'fas fa-stop'}, undefined, '.stopButton');
 
   createElement('div', { className: 'photographer-timer' }, undefined, 'div.photographer-controls');
   createElement('div', { className: 'photographer-progressBar' }, undefined, 'div.photographer-timer');
